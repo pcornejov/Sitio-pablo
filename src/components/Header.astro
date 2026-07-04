@@ -17,6 +17,12 @@
   </div>
 </header>
 
+<nav class="mobile-quicklinks">
+  <a href="#servicios">Servicios</a>
+  <span class="dot">·</span>
+  <a href="#contacto">Contacto</a>
+</nav>
+
 <style>
   .site-header {
     position: sticky;
@@ -37,7 +43,7 @@
   .brand {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: var(--space-2);
   }
 
   .brand-name {
@@ -60,25 +66,65 @@
 
   .nav-links {
     display: none;
-    gap: 2rem;
+    gap: var(--space-6);
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-secondary);
   }
 
-  .nav-links a:hover {
+  .nav-links a {
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
     color: var(--text-primary);
+    border-bottom-color: var(--accent-cyan);
   }
 
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-4);
+  }
+
+  /* ---------- Mobile-only quicklinks bar ---------- */
+  .mobile-quicklinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+    height: 40px;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .mobile-quicklinks a {
+    padding: 4px 2px;
+    transition: color 0.15s ease;
+  }
+
+  .mobile-quicklinks a:hover,
+  .mobile-quicklinks a:focus-visible {
+    color: var(--text-primary);
+  }
+
+  .mobile-quicklinks .dot {
+    color: var(--text-tertiary);
   }
 
   @media (min-width: 641px) {
     .nav-links {
       display: flex;
+    }
+
+    .mobile-quicklinks {
+      display: none;
     }
   }
 

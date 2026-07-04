@@ -3,18 +3,21 @@
 
 <section class="hero" id="inicio">
   <div class="container hero-inner">
-    <span class="eyebrow">Desarrollo de software potenciado por Inteligencia Artificial</span>
-    <h1>Software a medida, construido más rápido gracias a la IA</h1>
+    <span class="eyebrow">Desarrollo de software impulsado por Inteligencia Artificial</span>
+    <h1>Software a medida, entregado más rápido gracias a la IA</h1>
     <p class="subheadline">
-      Diseñamos y desarrollamos soluciones de software para tu negocio combinando ingeniería
-      sólida con inteligencia artificial de última generación: entregas más rápidas, menos
-      errores y productos que evolucionan contigo.
+      Diseño y desarrollo soluciones de software para tu negocio, combinando ingeniería sólida
+      con inteligencia artificial de última generación: entregas más rápidas, menos errores y
+      productos que evolucionan contigo.
     </p>
     <div class="hero-ctas">
-      <a href="#contacto" class="btn btn-primary">Solicitar una consultoría gratuita</a>
+      <a href="#contacto" class="btn btn-primary">Agenda una consultoría gratuita</a>
       <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
     </div>
-    <p class="hero-trust">+12 años de experiencia · Proyectos en banca y gobierno</p>
+    <p class="hero-trust">
+      +12 años de experiencia · Banca, gobierno y fintech (SBPay, Previred, Contraloría General
+      de la República)
+    </p>
   </div>
 </section>
 
@@ -52,7 +55,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: var(--space-5);
   }
 
   .eyebrow {
@@ -63,7 +66,7 @@
     color: var(--accent-cyan);
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 
   .eyebrow::before {
@@ -90,13 +93,13 @@
   .hero-ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--space-4);
     justify-content: center;
-    margin-top: 0.5rem;
+    margin-top: var(--space-2);
   }
 
   .hero-trust {
-    margin-top: 1rem;
+    margin-top: var(--space-4);
     font-size: 0.875rem;
     color: var(--text-tertiary);
   }

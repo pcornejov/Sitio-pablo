@@ -6,21 +6,26 @@
     <div class="contact-card">
       <h2>Hablemos de tu proyecto</h2>
       <p class="contact-copy">
-        Cuéntame qué necesitas y conversemos sin costo sobre cómo la IA y una ingeniería sólida
-        pueden acelerar tu próximo proyecto de software.
+        Cuéntame qué necesitas y conversemos, sin costo, sobre cómo la IA y una ingeniería
+        sólida pueden acelerar tu próximo proyecto de software.
       </p>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:tu@email.com">
+        <a class="contact-link" href="mailto:pablo.cornejo.v@gmail.com">
           <span class="icon-dot" aria-hidden="true"></span>
-          tu@email.com
+          <span class="label-main">pablo.cornejo.v@gmail.com</span>
         </a>
-        <a class="contact-link" href="#" target="_blank" rel="noopener">
+        <a class="contact-link" href="https://wa.me/56957591164" target="_blank" rel="noopener">
           <span class="icon-dot" aria-hidden="true"></span>
-          WhatsApp
+          <span class="label-main">+56 9 5759 1164 <span class="label-sub">WhatsApp</span></span>
         </a>
-        <a class="contact-link" href="#" target="_blank" rel="noopener">
+        <a
+          class="contact-link"
+          href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/"
+          target="_blank"
+          rel="noopener"
+        >
           <span class="icon-dot" aria-hidden="true"></span>
-          LinkedIn
+          <span class="label-main">LinkedIn <span class="label-sub">Pablo Cornejo Villarroel</span></span>
         </a>
       </div>
     </div>
@@ -36,12 +41,12 @@
     border-top: 3px solid transparent;
     border-image: var(--gradient-ai) 1;
     border-radius: var(--radius-lg);
-    padding: clamp(2rem, 5vw, 3rem);
+    padding: clamp(var(--space-6), 5vw, var(--space-7));
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .contact-card p.contact-copy {
@@ -52,31 +57,34 @@
   .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: var(--space-3);
     width: 100%;
-    max-width: 360px;
-    margin-top: 0.75rem;
+    max-width: 380px;
+    margin-top: var(--space-3);
   }
 
   .contact-link {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--space-3);
     justify-content: center;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
-    padding: 0.85rem 1.25rem;
+    padding: var(--space-4) var(--space-5);
     font-weight: 500;
     font-size: 0.95rem;
     transition:
       border-color 0.2s ease,
-      transform 0.15s ease;
+      transform 0.15s ease,
+      background 0.2s ease;
   }
 
-  .contact-link:hover {
+  .contact-link:hover,
+  .contact-link:focus-visible {
     border-color: rgba(34, 211, 238, 0.45);
     transform: translateY(-2px);
+    background: var(--bg-surface);
   }
 
   .contact-link .icon-dot {
@@ -87,14 +95,28 @@
     flex-shrink: 0;
   }
 
+  .contact-link .label-main {
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  .contact-link .label-sub {
+    color: var(--text-tertiary);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    margin-left: var(--space-1);
+  }
+
   @media (min-width: 641px) {
     .contact-links {
       flex-direction: row;
       max-width: none;
+      align-items: stretch;
     }
 
     .contact-link {
       flex: 1;
+      min-width: 0;
     }
   }
 </style>

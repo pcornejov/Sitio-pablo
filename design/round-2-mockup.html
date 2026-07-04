@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pablo Cornejo · Software & IA — Mockup Round 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-base: #0B1120;
+    --bg-surface: #111A2E;
+    --bg-elevated: #161F38;
+    --border-subtle: rgba(255,255,255,0.08);
+    --text-primary: #F5F7FA;
+    --text-secondary: #94A3B8;
+    --text-tertiary: #64748B;
+    --accent-violet: #8B5CF6;
+    --accent-cyan: #22D3EE;
+    --gradient-ai: linear-gradient(135deg, #8B5CF6 0%, #22D3EE 100%);
+    --accent-mint: #34D399;
+
+    --font-heading: "Space Grotesk", system-ui, -apple-system, sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+
+    /* ---------- Round 2: spacing scale ---------- */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+    --space-9: 96px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, svg { max-width: 100%; display: block; }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  /* ---------- Round 2: focus-visible (global, new) ---------- */
+  a:focus-visible,
+  button:focus-visible,
+  .btn:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 17, 32, 0.75);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .brand-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .nav-links {
+    display: none;
+    gap: var(--space-6);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .nav-links a {
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent-cyan);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  /* ---------- Round 2: mobile-only quicklinks bar (new) ---------- */
+  .mobile-quicklinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+    height: 40px;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .mobile-quicklinks a {
+    padding: 4px 2px;
+    transition: color 0.15s ease;
+  }
+  .mobile-quicklinks a:hover,
+  .mobile-quicklinks a:focus-visible { color: var(--text-primary); }
+
+  .mobile-quicklinks .dot { color: var(--text-tertiary); }
+
+  @media (min-width: 641px) {
+    .mobile-quicklinks { display: none; }
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--gradient-ai);
+    color: #05070D;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.55);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 14px -6px rgba(139, 92, 246, 0.5);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+  }
+  .btn-secondary:hover {
+    background: var(--bg-elevated);
+    border-color: rgba(34, 211, 238, 0.35);
+  }
+  .btn-secondary:active { transform: translateY(0); }
+
+  .btn-sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.875rem;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding-block: clamp(4rem, 12vw, 7rem);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(900px, 140vw);
+    height: 600px;
+    background: radial-gradient(closest-side, rgba(139,92,246,0.20), rgba(34,211,238,0.10) 55%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .eyebrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gradient-ai);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw + 1rem, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p.subheadline {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-top: var(--space-2);
+  }
+
+  .hero-trust {
+    margin-top: var(--space-4);
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+  }
+
+  /* ---------- Section shared ---------- */
+  section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+
+  .section-head {
+    max-width: 640px;
+    margin: 0 auto var(--space-7);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.5rem, 3vw + 1rem, 2.25rem);
+    letter-spacing: -0.01em;
+  }
+
+  .section-head p {
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Servicios ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .service-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+  }
+
+  .service-card:hover,
+  .service-card.demo-hover {
+    transform: translateY(-4px);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 20px 40px -24px rgba(139, 92, 246, 0.35);
+  }
+
+  .demo-hover-tag {
+    position: absolute;
+    top: -12px;
+    right: var(--space-4);
+    background: var(--gradient-ai);
+    color: #05070D;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--gradient-ai);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #05070D;
+  }
+
+  .service-icon svg { width: 24px; height: 24px; }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .service-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Contacto ---------- */
+  .contact-card {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid transparent;
+    border-image: var(--gradient-ai) 1;
+    border-radius: var(--radius-lg);
+    padding: clamp(var(--space-6), 5vw, var(--space-7));
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .contact-card p.contact-copy {
+    color: var(--text-secondary);
+    max-width: 480px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    max-width: 380px;
+    margin-top: var(--space-3);
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    justify-content: center;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4) var(--space-5);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  }
+
+  .contact-link:hover,
+  .contact-link:focus-visible {
+    border-color: rgba(34, 211, 238, 0.45);
+    transform: translateY(-2px);
+    background: var(--bg-surface);
+  }
+
+  .contact-link .icon-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gradient-ai);
+    flex-shrink: 0;
+  }
+
+  .contact-link .label-sub {
+    color: var(--text-tertiary);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    margin-left: var(--space-1);
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    border-top: 1px solid var(--border-subtle);
+    padding-block: var(--space-6);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 0.875rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .footer-links a:hover,
+  .footer-links a:focus-visible {
+    color: var(--text-secondary);
+    border-bottom-color: var(--accent-cyan);
+  }
+
+  /* ---------- Notas de diseño (solo mockup, no van al sitio) ---------- */
+  .design-note {
+    max-width: 1200px;
+    margin: 0 auto var(--space-7);
+    padding: var(--space-4) var(--space-5);
+    background: rgba(34, 211, 238, 0.06);
+    border: 1px dashed rgba(34, 211, 238, 0.35);
+    border-radius: var(--radius-sm);
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+  }
+  .design-note strong { color: var(--accent-cyan); }
+
+  /* ---------- Breakpoints ---------- */
+
+  /* 641px – 1024px: nav appears, servicios en 2 columnas */
+  @media (min-width: 641px) {
+    .nav-links { display: flex; }
+
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-links {
+      flex-direction: row;
+      max-width: none;
+    }
+
+    .contact-link { flex: 1; }
+  }
+
+  /* > 1024px: servicios en 4 columnas */
+  @media (min-width: 1025px) {
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* < 640px extra tightening */
+  @media (max-width: 640px) {
+    .header-inner { height: 64px; }
+    .brand-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="design-note container">
+    <strong>Nota de mockup (no forma parte del sitio):</strong> la card con la
+    etiqueta "estado :hover" muestra fijo el estilo de hover para referencia
+    visual del builder. La barra "Servicios · Contacto" bajo el header solo es
+    visible en este mockup si reduces el viewport a &lt;641px — es el nuevo
+    <code>.mobile-quicklinks</code> del Round 2.
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-name">Pablo Cornejo</span>
+        <span class="brand-badge">Software &amp; IA</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#contacto" class="btn btn-primary btn-sm">Contáctame</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Round 2: barra mobile-only con los 2 anchors, visible solo <641px -->
+  <nav class="mobile-quicklinks">
+    <a href="#servicios">Servicios</a>
+    <span class="dot">·</span>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero-inner">
+        <span class="eyebrow">Desarrollo de software impulsado por Inteligencia Artificial</span>
+        <h1>Software a medida, entregado más rápido gracias a la IA</h1>
+        <p class="subheadline">
+          Diseño y desarrollo soluciones de software para tu negocio, combinando
+          ingeniería sólida con inteligencia artificial de última generación:
+          entregas más rápidas, menos errores y productos que evolucionan contigo.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary">Agenda una consultoría gratuita</a>
+          <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+        </div>
+        <p class="hero-trust">+12 años de experiencia · Banca, gobierno y fintech (SBPay, Previred, Contraloría General de la República)</p>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <h2>Servicios</h2>
+          <p>Soluciones de software pensadas para crecer con tu negocio, desde el primer prototipo hasta sistemas críticos en producción.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card demo-hover">
+            <span class="demo-hover-tag">estado :hover</span>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3>Desarrollo de Software a Medida</h3>
+            <p>Construyo aplicaciones y microservicios a medida con Node.js, NestJS, Java y Angular, diseñados en torno a los procesos reales de tu negocio.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"></path><path d="M12 8v4l3 3"></path></svg>
+            </div>
+            <h3>Automatización e Integración con IA</h3>
+            <p>Integro modelos de IA en tus flujos de trabajo y conecto sistemas —incluyendo integraciones bancarias y gubernamentales— para automatizar tareas y reducir errores manuales.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <!-- Round 2: reemplaza la grilla de 4 cuadrados por un ícono cloud-upload,
+                   más claro para "migración a AWS" -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.8-8.93A5.5 5.5 0 0 1 17.5 9.5 4 4 0 0 1 17 18H7z"></path><path d="M12 17v-6"></path><path d="M9.5 13.5 12 11l2.5 2.5"></path></svg>
+            </div>
+            <h3>Modernización de Sistemas Legacy</h3>
+            <p>Migro aplicaciones Java y Angular hacia arquitecturas modernas en la nube (AWS, Docker), mejorando rendimiento, seguridad y facilidad de mantenimiento.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+            <h3>Consultoría Tecnológica y Prototipado Rápido</h3>
+            <p>Te ayudo a validar ideas rápido: arquitectura, elección de stack y prototipos funcionales apoyados en IA para llegar antes al mercado.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-card">
+          <h2>Hablemos de tu proyecto</h2>
+          <p class="contact-copy">
+            Cuéntame qué necesitas y conversemos, sin costo, sobre cómo la IA y
+            una ingeniería sólida pueden acelerar tu próximo proyecto de software.
+          </p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:pablo.cornejo.v@gmail.com">
+              <span class="icon-dot" aria-hidden="true"></span>
+              pablo.cornejo.v@gmail.com
+            </a>
+            <a class="contact-link" href="https://wa.me/56957591164" target="_blank" rel="noopener">
+              <span class="icon-dot" aria-hidden="true"></span>
+              +56 9 5759 1164 <span class="label-sub">WhatsApp</span>
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/" target="_blank" rel="noopener">
+              <span class="icon-dot" aria-hidden="true"></span>
+              LinkedIn <span class="label-sub">Pablo Cornejo Villarroel</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="mailto:pablo.cornejo.v@gmail.com">pablo.cornejo.v@gmail.com</a>
+        <a href="https://wa.me/56957591164" target="_blank" rel="noopener">+56 9 5759 1164</a>
+        <a href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p>&copy; 2026 Pablo Cornejo · Software &amp; IA. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

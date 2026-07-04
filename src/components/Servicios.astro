@@ -15,7 +15,7 @@ import ServiceCard from "./ServiceCard.astro";
     <div class="services-grid">
       <ServiceCard
         title="Desarrollo de Software a Medida"
-        description="Construimos aplicaciones y microservicios a medida con Node.js, NestJS, Java y Angular, adaptados a los procesos reales de tu negocio."
+        description="Construyo aplicaciones y microservicios a medida con Node.js, NestJS, Java y Angular, diseñados en torno a los procesos reales de tu negocio."
       >
         <svg
           slot="icon"
@@ -32,7 +32,7 @@ import ServiceCard from "./ServiceCard.astro";
 
       <ServiceCard
         title="Automatización e Integración con IA"
-        description="Integramos modelos de IA en tus flujos de trabajo y conectamos sistemas —incluyendo integraciones bancarias y gubernamentales— para automatizar tareas y reducir errores manuales."
+        description="Integro modelos de IA en tus flujos de trabajo y conecto sistemas —incluyendo integraciones bancarias y gubernamentales— para automatizar tareas y reducir errores manuales."
       >
         <svg
           slot="icon"
@@ -48,7 +48,7 @@ import ServiceCard from "./ServiceCard.astro";
 
       <ServiceCard
         title="Modernización de Sistemas Legacy"
-        description="Migramos aplicaciones Java y Angular hacia arquitecturas modernas en la nube (AWS, Docker), mejorando rendimiento, seguridad y mantenibilidad."
+        description="Migro aplicaciones Java y Angular hacia arquitecturas modernas en la nube (AWS, Docker), mejorando rendimiento, seguridad y facilidad de mantenimiento."
       >
         <svg
           slot="icon"
@@ -58,18 +58,14 @@ import ServiceCard from "./ServiceCard.astro";
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          ><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"
-          ></rect><rect x="14" y="14" width="7" height="7"></rect><rect
-            x="3"
-            y="14"
-            width="7"
-            height="7"></rect></svg
+          ><path d="M7 18a4.5 4.5 0 0 1-.8-8.93A5.5 5.5 0 0 1 17.5 9.5 4 4 0 0 1 17 18H7z"
+          ></path><path d="M12 17v-6"></path><path d="M9.5 13.5 12 11l2.5 2.5"></path></svg
         >
       </ServiceCard>
 
       <ServiceCard
         title="Consultoría Tecnológica y Prototipado Rápido"
-        description="Te ayudamos a validar ideas rápido: arquitectura, elección de stack y prototipos funcionales apoyados en IA para llegar antes al mercado."
+        description="Te ayudo a validar ideas rápido: arquitectura, elección de stack y prototipos funcionales apoyados en IA para llegar antes al mercado."
       >
         <svg
           slot="icon"
@@ -92,7 +88,7 @@ import ServiceCard from "./ServiceCard.astro";
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--space-6);
   }
 
   @media (min-width: 641px) {

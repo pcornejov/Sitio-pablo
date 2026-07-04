@@ -20,4 +20,15 @@
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 20px;
+
+  /* Spacing scale (base 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
 }
