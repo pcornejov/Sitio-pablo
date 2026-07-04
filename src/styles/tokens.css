@@ -1,0 +1,23 @@
+:root {
+  /* Colors */
+  --bg-base: #0b1120;
+  --bg-surface: #111a2e;
+  --bg-elevated: #161f38;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-primary: #f5f7fa;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #22d3ee;
+  --gradient-ai: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
+  --accent-mint: #34d399;
+
+  /* Typography */
+  --font-heading: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+}

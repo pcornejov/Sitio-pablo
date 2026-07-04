@@ -1,0 +1,109 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+---
+
+<section id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <h2>Servicios</h2>
+      <p>
+        Soluciones de software pensadas para crecer con tu negocio, desde el primer prototipo
+        hasta sistemas críticos en producción.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <ServiceCard
+        title="Desarrollo de Software a Medida"
+        description="Construimos aplicaciones y microservicios a medida con Node.js, NestJS, Java y Angular, adaptados a los procesos reales de tu negocio."
+      >
+        <svg
+          slot="icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"
+          ></polyline></svg
+        >
+      </ServiceCard>
+
+      <ServiceCard
+        title="Automatización e Integración con IA"
+        description="Integramos modelos de IA en tus flujos de trabajo y conectamos sistemas —incluyendo integraciones bancarias y gubernamentales— para automatizar tareas y reducir errores manuales."
+      >
+        <svg
+          slot="icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M12 2a10 10 0 1 0 10 10"></path><path d="M12 8v4l3 3"></path></svg
+        >
+      </ServiceCard>
+
+      <ServiceCard
+        title="Modernización de Sistemas Legacy"
+        description="Migramos aplicaciones Java y Angular hacia arquitecturas modernas en la nube (AWS, Docker), mejorando rendimiento, seguridad y mantenibilidad."
+      >
+        <svg
+          slot="icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"
+          ></rect><rect x="14" y="14" width="7" height="7"></rect><rect
+            x="3"
+            y="14"
+            width="7"
+            height="7"></rect></svg
+        >
+      </ServiceCard>
+
+      <ServiceCard
+        title="Consultoría Tecnológica y Prototipado Rápido"
+        description="Te ayudamos a validar ideas rápido: arquitectura, elección de stack y prototipos funcionales apoyados en IA para llegar antes al mercado."
+      >
+        <svg
+          slot="icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><circle cx="12" cy="12" r="3"></circle><path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+          ></path></svg
+        >
+      </ServiceCard>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 641px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

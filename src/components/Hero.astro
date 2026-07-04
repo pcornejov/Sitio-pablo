@@ -1,0 +1,103 @@
+---
+---
+
+<section class="hero" id="inicio">
+  <div class="container hero-inner">
+    <span class="eyebrow">Desarrollo de software potenciado por Inteligencia Artificial</span>
+    <h1>Software a medida, construido más rápido gracias a la IA</h1>
+    <p class="subheadline">
+      Diseñamos y desarrollamos soluciones de software para tu negocio combinando ingeniería
+      sólida con inteligencia artificial de última generación: entregas más rápidas, menos
+      errores y productos que evolucionan contigo.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn btn-primary">Solicitar una consultoría gratuita</a>
+      <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+    </div>
+    <p class="hero-trust">+12 años de experiencia · Proyectos en banca y gobierno</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(4rem, 12vw, 7rem);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(900px, 140vw);
+    height: 600px;
+    background: radial-gradient(
+      closest-side,
+      rgba(139, 92, 246, 0.2),
+      rgba(34, 211, 238, 0.1) 55%,
+      transparent 75%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .eyebrow {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gradient-ai);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw + 1rem, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p.subheadline {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .hero-trust {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+  }
+</style>
