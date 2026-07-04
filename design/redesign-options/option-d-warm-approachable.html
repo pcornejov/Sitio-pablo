@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pablo Cornejo · Software &amp; IA — Opción D: Warm &amp; Approachable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-base:#FFFFFF;
+    --bg-alt:#FFF7ED;
+    --bg-blue-soft:#EFF4FF;
+    --border-subtle:rgba(15,23,42,0.09);
+    --text-primary:#0F2138;
+    --text-secondary:#51617A;
+    --text-tertiary:#8592A8;
+    --brand-blue:#2563EB;
+    --brand-blue-dark:#1E3A8A;
+    --accent-orange:#F97316;
+    --accent-orange-dark:#EA580C;
+    --accent-amber:#F59E0B;
+    --radius-md:14px;
+    --radius-lg:22px;
+    --radius-xl:32px;
+    --radius-sm:10px;
+    --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px;
+    --shadow-soft: 0 1px 2px rgba(15,23,42,0.05), 0 10px 28px -12px rgba(37,99,235,0.14);
+    --shadow-warm: 0 14px 30px -12px rgba(249,115,22,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-base);
+    color:var(--text-primary);
+    font-family:'Inter', system-ui, -apple-system, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Poppins', system-ui, sans-serif; margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+  .container{max-width:1200px; margin-inline:auto; padding-inline:clamp(1.25rem,4vw,2.5rem);}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:var(--space-2);
+    font-size:0.8125rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--accent-orange-dark);
+  }
+  .eyebrow::before{content:''; width:9px; height:9px; border-radius:50%; background:var(--accent-orange); display:inline-block;}
+
+  /* Header */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-subtle);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:78px;
+  }
+  .brand{display:flex; align-items:center; gap:var(--space-3); font-family:'Poppins',sans-serif; font-weight:700; font-size:1.2rem; color:var(--brand-blue-dark);}
+  .brand-badge{font-family:'Inter',sans-serif; font-weight:600; font-size:0.6875rem; text-transform:uppercase; letter-spacing:0.06em; color:#fff; background:var(--brand-blue); padding:4px 10px; border-radius:999px;}
+  .nav-links{display:flex; gap:var(--space-6); list-style:none; margin:0; padding:0; font-weight:600; font-size:0.9375rem;}
+  .nav-links a{text-decoration:none; color:var(--text-secondary); border-bottom:2px solid transparent; padding-bottom:4px; transition:color .15s, border-color .15s;}
+  .nav-links a:hover{color:var(--brand-blue-dark); border-color:var(--accent-orange);}
+  .header-actions{display:flex; align-items:center; gap:var(--space-4);}
+  .menu-toggle{display:none;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:0.9375rem;
+    padding:14px 26px; border-radius:999px; text-decoration:none; cursor:pointer; border:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--accent-orange); color:#fff; box-shadow:var(--shadow-warm);}
+  .btn-primary:hover{transform:translateY(-2px); background:var(--accent-orange-dark); box-shadow:0 16px 34px -10px rgba(234,88,12,0.45);}
+  .btn-secondary{background:#fff; color:var(--brand-blue-dark); border:1.5px solid var(--border-subtle); box-shadow:var(--shadow-soft);}
+  .btn-secondary:hover{transform:translateY(-2px); border-color:var(--brand-blue);}
+  .btn-sm{padding:11px 20px; font-size:0.875rem;}
+
+  /* Hero: photo-forward, NOT centered */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:var(--space-8) 0 var(--space-9);
+    background:linear-gradient(180deg, var(--bg-blue-soft) 0%, var(--bg-base) 65%);
+  }
+  .hero-inner{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:var(--space-8); align-items:center;
+  }
+  .hero-copy{display:flex; flex-direction:column; gap:var(--space-5); align-items:flex-start;}
+  .hero h1{font-size:clamp(2rem,3vw + 1.2rem,3.125rem); font-weight:700; line-height:1.1; letter-spacing:-0.01em; color:var(--text-primary);}
+  .hero .accent{color:var(--accent-orange-dark);}
+  .hero-sub{font-size:1.0625rem; color:var(--text-secondary); max-width:520px;}
+  .hero-ctas{display:flex; gap:var(--space-4); flex-wrap:wrap;}
+  .trust-line{font-size:0.875rem; color:var(--text-tertiary);}
+  .trust-line strong{color:var(--brand-blue-dark); font-weight:700;}
+  .hero-logos{display:flex; gap:var(--space-3); flex-wrap:wrap; margin-top:2px;}
+  .hero-logos span{font-size:0.8125rem; font-weight:700; letter-spacing:0.02em; color:var(--brand-blue-dark); background:#fff; border:1px solid var(--border-subtle); padding:7px 14px; border-radius:999px;}
+
+  /* Hero photo placeholder */
+  .hero-photo-wrap{position:relative; display:flex; align-items:center; justify-content:center;}
+  .hero-photo{
+    width:100%; max-width:420px; aspect-ratio:1/1.05; border-radius:var(--radius-xl);
+    background:linear-gradient(145deg, #FDBA74 0%, #F97316 38%, #2563EB 100%);
+    position:relative; overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(37,99,235,0.35), 0 10px 24px -8px rgba(249,115,22,0.25);
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+  .hero-photo::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(120% 90% at 30% 15%, rgba(255,255,255,0.35), transparent 55%),
+               radial-gradient(90% 70% at 80% 100%, rgba(15,33,56,0.35), transparent 60%);
+  }
+  .hero-photo-label{
+    position:relative; margin-bottom:var(--space-5);
+    background:rgba(15,33,56,0.55); backdrop-filter:blur(4px);
+    color:#fff; font-size:0.8125rem; font-weight:600; letter-spacing:0.02em;
+    padding:8px 16px; border-radius:999px;
+  }
+  .hero-photo-badge{
+    position:absolute; top:-14px; right:-14px; z-index:2;
+    background:#fff; border-radius:50%; width:76px; height:76px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    box-shadow:0 12px 24px -8px rgba(15,33,56,0.3);
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:0.75rem; color:var(--brand-blue-dark); line-height:1.15;
+    border:3px solid var(--bg-base);
+  }
+
+  section{padding:var(--space-9) 0;}
+  .section-head{max-width:640px; margin:0 auto var(--space-7); text-align:center; display:flex; flex-direction:column; gap:var(--space-3);}
+  .section-head h2{font-size:clamp(1.75rem,3vw + 1rem,2.5rem); color:var(--brand-blue-dark);}
+  .section-head p{color:var(--text-secondary); font-size:1.03125rem;}
+
+  /* Servicios — warm icon+color-block gallery grid */
+  .services{background:var(--bg-alt);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6);}
+  .gallery-card{
+    background:#fff; border-radius:var(--radius-lg); padding:var(--space-6);
+    box-shadow:var(--shadow-soft); display:flex; flex-direction:column; gap:var(--space-5);
+    border-top:5px solid var(--card-color, var(--brand-blue));
+  }
+  .gallery-card:nth-child(1){--card-color:#2563EB;}
+  .gallery-card:nth-child(2){--card-color:#F97316;}
+  .gallery-card:nth-child(3){--card-color:#F59E0B;}
+  .gallery-icon{
+    width:56px; height:56px; border-radius:16px; background:color-mix(in srgb, var(--card-color) 14%, white);
+    display:flex; align-items:center; justify-content:center; font-size:1.75rem;
+  }
+  .gallery-card h3{font-size:1.25rem; color:var(--text-primary);}
+  .gallery-items{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--space-4);}
+  .gallery-items li{border-top:1px solid var(--border-subtle); padding-top:var(--space-4); display:flex; gap:12px; align-items:flex-start;}
+  .gallery-items .emoji{font-size:1.15rem; flex-shrink:0;}
+  .gallery-items h4{font-size:1rem; font-weight:700; margin-bottom:4px; font-family:'Inter',sans-serif; color:var(--text-primary);}
+  .gallery-items p{font-size:0.9375rem; color:var(--text-secondary);}
+
+  /* Cómo trabajo contigo — process steps */
+  .process-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-5);}
+  .step-card{
+    background:var(--bg-blue-soft); border-radius:var(--radius-lg); padding:var(--space-6);
+    display:flex; flex-direction:column; gap:var(--space-4); position:relative;
+  }
+  .step-num{
+    width:40px; height:40px; border-radius:12px; background:var(--brand-blue); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:'Poppins',sans-serif; font-weight:700; font-size:1.05rem;
+  }
+  .step-card:nth-child(4) .step-num{background:var(--accent-orange);}
+  .step-card h4{font-size:1.05rem; color:var(--text-primary);}
+  .step-card p{font-size:0.9375rem; color:var(--text-secondary);}
+
+  /* Credibility — warm/light band */
+  .credibility{background:linear-gradient(135deg, #FFF7ED 0%, #EFF4FF 100%);}
+  .stats-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6);}
+  .stat-card{background:#fff; border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:var(--space-6); text-align:center; box-shadow:var(--shadow-soft);}
+  .stat-num{font-family:'Poppins',sans-serif; font-weight:700; font-size:1.6rem; color:var(--accent-orange-dark); margin-bottom:var(--space-3);}
+  .stat-card p{color:var(--text-secondary); font-size:0.9375rem;}
+
+  /* Contacto */
+  .contact-card{
+    max-width:760px; margin-inline:auto; text-align:center;
+    background:linear-gradient(135deg,#fff 0%,#FFF7ED 100%);
+    border:1px solid var(--border-subtle);
+    border-radius:var(--radius-lg); padding:var(--space-7); box-shadow:var(--shadow-soft);
+    display:flex; flex-direction:column; gap:var(--space-5); align-items:center;
+  }
+  .contact-card h2{color:var(--brand-blue-dark);}
+  .contact-card p{color:var(--text-secondary); max-width:520px;}
+  .contact-links{display:flex; gap:var(--space-4); flex-wrap:wrap; justify-content:center; margin-top:var(--space-3);}
+  .contact-link{
+    display:flex; align-items:center; gap:var(--space-3);
+    border:1px solid var(--border-subtle); border-radius:var(--radius-sm); background:#fff;
+    padding:var(--space-4) var(--space-5); text-decoration:none; color:var(--text-primary);
+    font-weight:600; font-size:0.9375rem; transition:transform .15s, border-color .15s;
+  }
+  .contact-link:hover{transform:translateY(-2px); border-color:var(--accent-orange);}
+
+  /* Footer */
+  .site-footer{background:var(--brand-blue-dark); color:#C7D5F0; padding:var(--space-6) 0;}
+  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-4); font-size:0.875rem;}
+  .footer-links{display:flex; gap:var(--space-5); list-style:none; margin:0; padding:0;}
+  .footer-links a{text-decoration:none; color:#C7D5F0;}
+  .footer-links a:hover{color:#fff;}
+
+  /* WhatsApp floating button */
+  .wa-float{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    width:58px; height:58px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px -6px rgba(37,211,102,0.6);
+    text-decoration:none; transition:transform .15s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:30px; height:30px; fill:#fff;}
+
+  @media (max-width:960px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-photo-wrap{order:-1;}
+    .hero-photo{max-width:320px;}
+    .gallery-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:720px){
+    .nav-links{display:none;}
+    .header-actions .btn-secondary{display:none;}
+    .process-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Pablo Cornejo <span class="brand-badge">Software &amp; IA</span></div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#como-trabajo">Cómo trabajo</a></li>
+          <li><a href="#por-que">Por qué yo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="#contacto" class="btn btn-secondary btn-sm">Agendar llamada</a>
+        <a href="#contacto" class="btn btn-primary btn-sm">Empecemos hoy</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Desarrollo de software impulsado por IA</span>
+        <h1>Hagamos crecer tu negocio con <span class="accent">software que sí funciona</span></h1>
+        <p class="hero-sub">Diseño y desarrollo soluciones a medida para tu negocio, combinando más de 12 años de experiencia real con inteligencia artificial de última generación: entregas más rápidas, menos errores y un acompañamiento cercano en cada etapa.</p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary">Cuéntame tu proyecto</a>
+          <a href="#contacto" class="btn btn-secondary">Agendar una llamada</a>
+        </div>
+        <p class="trust-line"><strong>+12 años de experiencia</strong> · Banca, gobierno y fintech (SBPay, Previred, Contraloría General de la República)</p>
+        <div class="hero-logos">
+          <span>SBPay</span><span>Contraloría General de la República</span><span>Previred</span>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <div class="hero-photo-badge">+12<br>años</div>
+          <span class="hero-photo-label">Pablo Cornejo · Desarrollador</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="justify-content:center;">Servicios</span>
+        <h2>Tres frentes de trabajo, un mismo objetivo</h2>
+        <p>Soluciones de software organizadas por foco, desde el primer prototipo hasta sistemas críticos en producción.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="gallery-icon">💻</div>
+          <h3>Desarrollo de Software a Medida</h3>
+          <ul class="gallery-items">
+            <li><span class="emoji">🧩</span><div><h4>Aplicaciones a Medida</h4><p>Construyo aplicaciones web y de negocio con Node.js, NestJS, Java y Angular, diseñadas en torno a tus procesos reales.</p></div></li>
+            <li><span class="emoji">🔗</span><div><h4>Microservicios y APIs</h4><p>Diseño arquitecturas de microservicios y APIs robustas, pensadas para escalar sin reescribir todo desde cero.</p></div></li>
+          </ul>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-icon">🤖</div>
+          <h3>IA y Automatización</h3>
+          <ul class="gallery-items">
+            <li><span class="emoji">✨</span><div><h4>Integración de IA en tu Producto</h4><p>Incorporo modelos de IA en tus flujos de trabajo existentes para agregar capacidades inteligentes sin partir de cero.</p></div></li>
+            <li><span class="emoji">⚙️</span><div><h4>Automatización de Procesos</h4><p>Conecto sistemas —incluyendo integraciones bancarias y gubernamentales— para automatizar tareas y reducir errores manuales.</p></div></li>
+          </ul>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-icon">🚀</div>
+          <h3>Modernización y Consultoría</h3>
+          <ul class="gallery-items">
+            <li><span class="emoji">☁️</span><div><h4>Migración a la Nube</h4><p>Migro aplicaciones Java y Angular hacia arquitecturas modernas en AWS y Docker, mejorando rendimiento y seguridad.</p></div></li>
+            <li><span class="emoji">💬</span><div><h4>Consultoría y Prototipado Rápido</h4><p>Te ayudo a validar ideas rápido: arquitectura, elección de stack y prototipos funcionales apoyados en IA.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-trabajo">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="justify-content:center;">Cómo trabajo contigo</span>
+        <h2>Un proceso simple y transparente</h2>
+        <p>Sabrás siempre en qué etapa está tu proyecto, sin sorpresas ni letra chica.</p>
+      </div>
+      <div class="process-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4>Conversamos tu idea</h4>
+          <p>Una llamada sin costo para entender qué necesitas y qué problema quieres resolver.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4>Propuesta y cotización</h4>
+          <p>Te entrego un alcance claro, tiempos realistas y un precio cerrado, sin ambigüedades.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4>Desarrollo con avances constantes</h4>
+          <p>Trabajo en iteraciones cortas y te muestro avances reales durante todo el proyecto.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h4>Entrega y soporte continuo</h4>
+          <p>Lanzamos, y me quedo cerca: monitoreo, ajustes y soporte directo después del deploy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="credibility" id="por-que">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="justify-content:center;">Por qué trabajar conmigo</span>
+        <h2>Más de una década de experiencia real</h2>
+        <p>No solo teoría: proyectos reales, en producción, en sectores donde los errores cuestan caro.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">+12 años</div>
+          <p>de experiencia construyendo software para producción, no solo demos.</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Banca · Gobierno · Fintech</div>
+          <p>Proyectos reales en SBPay, Contraloría General de la República de Chile y Previred.</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Stack moderno con foco en IA</div>
+          <p>Node.js, NestJS, Java, Angular, TypeScript, Python, AWS y Docker.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="contacto">
+    <div class="container">
+      <div class="contact-card">
+        <span class="eyebrow">Contacto</span>
+        <h2>Hablemos de tu proyecto</h2>
+        <p>Cuéntame qué necesitas y conversemos, sin costo, sobre cómo la IA y una ingeniería sólida pueden acelerar tu próximo proyecto de software.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:pablo.cornejo.v@gmail.com">✉️ pablo.cornejo.v@gmail.com</a>
+          <a class="contact-link" href="https://wa.me/56957591164" target="_blank" rel="noopener">📱 +56 9 5759 1164</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/" target="_blank" rel="noopener">in LinkedIn</a>
+        </div>
+        <a href="mailto:pablo.cornejo.v@gmail.com" class="btn btn-primary">Cuéntame tu proyecto</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Pablo Cornejo · Software &amp; IA. Todos los derechos reservados.</span>
+      <ul class="footer-links">
+        <li><a href="mailto:pablo.cornejo.v@gmail.com">Email</a></li>
+        <li><a href="https://wa.me/56957591164" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/56957591164" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-2c1.9 1 4 1.6 6.3 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3Zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.6 1.2 1.2-4.4-.2-.4C5.8 18 5.2 16.5 5.2 15c0-5.9 4.9-10.8 10.8-10.8S26.8 9.1 26.8 15 21.9 24.8 16 24.8Zm5.9-8.1c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.2 3.3 5.3 4.6.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></svg>
+  </a>
+
+</body>
+</html>
