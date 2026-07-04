@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pablo Cornejo · Software &amp; IA — Opción A: Light Corporate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-base:#FFFFFF;
+    --bg-alt:#F4F6FB;
+    --bg-dark:#0B1120;
+    --bg-dark-elevated:#141D33;
+    --border-subtle:rgba(15,23,42,0.09);
+    --border-dark-subtle:rgba(255,255,255,0.1);
+    --text-primary:#0F172A;
+    --text-secondary:#4B5A72;
+    --text-tertiary:#8592A8;
+    --text-on-dark:#F5F7FA;
+    --text-on-dark-secondary:#9AA7BF;
+    --accent-violet:#7C3AED;
+    --accent-cyan:#0891B2;
+    --gradient-ai:linear-gradient(135deg,#7C3AED 0%, #06B6D4 100%);
+    --radius-md:14px;
+    --radius-lg:20px;
+    --radius-sm:10px;
+    --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px;
+    --shadow-soft: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px -12px rgba(15,23,42,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-base);
+    color:var(--text-primary);
+    font-family:'Inter', system-ui, -apple-system, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Space Grotesk', system-ui, sans-serif; margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+  .container{max-width:1200px; margin-inline:auto; padding-inline:clamp(1.25rem,4vw,2.5rem);}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:var(--space-2);
+    font-size:0.8125rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--accent-violet);
+  }
+  .eyebrow::before{content:''; width:8px; height:8px; border-radius:50%; background:var(--gradient-ai); display:inline-block;}
+
+  /* Header */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-subtle);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{display:flex; align-items:center; gap:var(--space-3); font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem;}
+  .brand-badge{font-family:'Inter',sans-serif; font-weight:600; font-size:0.6875rem; text-transform:uppercase; letter-spacing:0.06em; color:#fff; background:var(--gradient-ai); padding:3px 9px; border-radius:999px;}
+  .nav-links{display:flex; gap:var(--space-6); list-style:none; margin:0; padding:0; font-weight:600; font-size:0.9375rem;}
+  .nav-links a{text-decoration:none; color:var(--text-secondary); border-bottom:2px solid transparent; padding-bottom:4px; transition:color .15s, border-color .15s;}
+  .nav-links a:hover{color:var(--text-primary); border-color:var(--accent-cyan);}
+  .header-actions{display:flex; align-items:center; gap:var(--space-4);}
+  .menu-toggle{display:none;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:0.9375rem;
+    padding:13px 24px; border-radius:999px; text-decoration:none; cursor:pointer; border:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--gradient-ai); color:#fff; box-shadow:0 10px 24px -10px rgba(124,58,237,0.5);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 30px -10px rgba(124,58,237,0.6);}
+  .btn-secondary{background:#fff; color:var(--text-primary); border:1.5px solid var(--border-subtle); box-shadow:var(--shadow-soft);}
+  .btn-secondary:hover{transform:translateY(-2px); border-color:var(--accent-cyan);}
+  .btn-sm{padding:10px 18px; font-size:0.875rem;}
+  .btn-on-dark{background:#fff; color:var(--bg-dark);}
+  .btn-on-dark:hover{transform:translateY(-2px); box-shadow:0 12px 28px -12px rgba(255,255,255,0.25);}
+
+  /* Hero */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:var(--space-9) 0 var(--space-8);
+    background:
+      radial-gradient(600px 400px at 15% 10%, rgba(124,58,237,0.08), transparent 70%),
+      radial-gradient(600px 400px at 90% 20%, rgba(6,182,212,0.08), transparent 70%),
+      var(--bg-base);
+  }
+  .hero-inner{max-width:760px; margin-inline:auto; text-align:center; display:flex; flex-direction:column; align-items:center; gap:var(--space-5);}
+  .hero h1{font-size:clamp(2.25rem,4vw + 1rem,3.5rem); font-weight:700; line-height:1.08; letter-spacing:-0.01em;}
+  .hero .accent{background:var(--gradient-ai); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero-sub{font-size:1.0625rem; color:var(--text-secondary); max-width:600px;}
+  .hero-ctas{display:flex; gap:var(--space-4); flex-wrap:wrap; justify-content:center;}
+  .trust-line{font-size:0.875rem; color:var(--text-tertiary); margin-top:var(--space-3);}
+  .trust-line strong{color:var(--text-secondary); font-weight:600;}
+  .hero-logos{display:flex; gap:var(--space-6); flex-wrap:wrap; justify-content:center; margin-top:var(--space-5); opacity:0.75;}
+  .hero-logos span{font-size:0.8125rem; font-weight:700; letter-spacing:0.04em; color:var(--text-tertiary); border:1px solid var(--border-subtle); padding:6px 14px; border-radius:999px;}
+
+  section{padding:var(--space-9) 0;}
+  .section-head{max-width:640px; margin:0 auto var(--space-7); text-align:center; display:flex; flex-direction:column; gap:var(--space-3);}
+  .section-head h2{font-size:clamp(1.75rem,3vw + 1rem,2.5rem);}
+  .section-head p{color:var(--text-secondary); font-size:1.03125rem;}
+
+  /* Servicios */
+  .services{background:var(--bg-alt);}
+  .cat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6);}
+  .cat-card{background:#fff; border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:var(--space-6); box-shadow:var(--shadow-soft); display:flex; flex-direction:column; gap:var(--space-5);}
+  .cat-num{width:44px; height:44px; border-radius:12px; background:var(--gradient-ai); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700;}
+  .cat-card h3{font-size:1.25rem;}
+  .cat-items{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:var(--space-4);}
+  .cat-items li{border-top:1px solid var(--border-subtle); padding-top:var(--space-4);}
+  .cat-items h4{font-size:1rem; font-weight:700; margin-bottom:4px; font-family:'Inter',sans-serif;}
+  .cat-items p{font-size:0.9375rem; color:var(--text-secondary);}
+
+  /* Credibility dark band */
+  .credibility{background:var(--bg-dark); color:var(--text-on-dark); position:relative; overflow:hidden;}
+  .credibility::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(500px 300px at 80% 0%, rgba(124,58,237,0.25), transparent 70%),
+               radial-gradient(500px 300px at 10% 100%, rgba(6,182,212,0.18), transparent 70%);
+    pointer-events:none;
+  }
+  .credibility .container{position:relative;}
+  .credibility .section-head p{color:var(--text-on-dark-secondary);}
+  .stats-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6);}
+  .stat-card{background:var(--bg-dark-elevated); border:1px solid var(--border-dark-subtle); border-radius:var(--radius-md); padding:var(--space-6); text-align:center;}
+  .stat-num{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.75rem; background:var(--gradient-ai); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:var(--space-3);}
+  .stat-card p{color:var(--text-on-dark-secondary); font-size:0.9375rem;}
+
+  /* Maintenance */
+  .maintenance-card{
+    display:grid; grid-template-columns:1.1fr 1fr; gap:var(--space-7);
+    align-items:center;
+    background:#fff; border:1px solid var(--border-subtle); border-radius:var(--radius-lg);
+    padding:var(--space-7); box-shadow:var(--shadow-soft);
+  }
+  .maintenance-card h2{font-size:clamp(1.5rem,2.5vw + 1rem,2.125rem); margin-bottom:var(--space-4);}
+  .maintenance-card > div:first-child p{color:var(--text-secondary); font-size:1.0625rem;}
+  .maint-list{list-style:none; margin:var(--space-5) 0 0; padding:0; display:flex; flex-direction:column; gap:var(--space-4);}
+  .maint-list li{display:flex; gap:var(--space-3); align-items:flex-start; font-size:0.9375rem; color:var(--text-secondary);}
+  .check{flex-shrink:0; width:22px; height:22px; border-radius:50%; background:var(--gradient-ai); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700;}
+  .maint-visual{background:var(--bg-alt); border-radius:var(--radius-md); height:280px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
+  .maint-visual svg{width:56%; height:56%;}
+  .maint-visual::before{content:''; position:absolute; inset:0; background:radial-gradient(200px 200px at 50% 50%, rgba(124,58,237,0.12), transparent 70%);}
+
+  /* Contacto */
+  .contact-card{
+    max-width:760px; margin-inline:auto; text-align:center;
+    background:#fff; border-top:3px solid transparent; border-image:var(--gradient-ai) 1;
+    border-radius:var(--radius-lg); padding:var(--space-7); box-shadow:var(--shadow-soft);
+    display:flex; flex-direction:column; gap:var(--space-5); align-items:center;
+  }
+  .contact-card p{color:var(--text-secondary); max-width:520px;}
+  .contact-links{display:flex; gap:var(--space-4); flex-wrap:wrap; justify-content:center; margin-top:var(--space-3);}
+  .contact-link{
+    display:flex; align-items:center; gap:var(--space-3);
+    border:1px solid var(--border-subtle); border-radius:var(--radius-sm);
+    padding:var(--space-4) var(--space-5); text-decoration:none; color:var(--text-primary);
+    font-weight:600; font-size:0.9375rem; transition:transform .15s, border-color .15s;
+  }
+  .contact-link:hover{transform:translateY(-2px); border-color:var(--accent-cyan);}
+  .contact-icon{width:20px; height:20px; color:var(--accent-violet);}
+
+  /* Footer */
+  .site-footer{background:var(--bg-dark); color:var(--text-on-dark-secondary); padding:var(--space-6) 0;}
+  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-4); font-size:0.875rem;}
+  .footer-links{display:flex; gap:var(--space-5); list-style:none; margin:0; padding:0;}
+  .footer-links a{text-decoration:none; color:var(--text-on-dark-secondary);}
+  .footer-links a:hover{color:#fff;}
+
+  /* WhatsApp floating button */
+  .wa-float{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    width:58px; height:58px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px -6px rgba(37,211,102,0.6);
+    text-decoration:none; transition:transform .15s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:30px; height:30px; fill:#fff;}
+
+  @media (max-width:900px){
+    .cat-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr;}
+    .maintenance-card{grid-template-columns:1fr;}
+    .maint-visual{height:200px;}
+  }
+  @media (max-width:720px){
+    .nav-links{display:none;}
+    .header-actions .btn-secondary{display:none;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Pablo Cornejo <span class="brand-badge">Software &amp; IA</span></div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#por-que">Por qué yo</a></li>
+          <li><a href="#despues">Soporte</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="#contacto" class="btn btn-secondary btn-sm">Agendar llamada</a>
+        <a href="#contacto" class="btn btn-primary btn-sm">Cotizar proyecto</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="eyebrow">Desarrollo de software impulsado por IA</span>
+      <h1>Software a medida, <span class="accent">entregado más rápido</span> gracias a la IA</h1>
+      <p class="hero-sub">Diseño y desarrollo soluciones de software para tu negocio, combinando ingeniería sólida con inteligencia artificial de última generación: entregas más rápidas, menos errores y productos que evolucionan contigo.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn btn-primary">Cotizar mi proyecto</a>
+        <a href="#contacto" class="btn btn-secondary">Agendar una llamada</a>
+      </div>
+      <p class="trust-line"><strong>+12 años de experiencia</strong> · Banca, gobierno y fintech (SBPay, Previred, Contraloría General de la República)</p>
+      <div class="hero-logos">
+        <span>SBPay</span><span>Contraloría General de la República</span><span>Previred</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="justify-content:center;">Servicios</span>
+        <h2>Tres frentes de trabajo, un mismo objetivo</h2>
+        <p>Soluciones de software organizadas por foco, desde el primer prototipo hasta sistemas críticos en producción.</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <div class="cat-num">01</div>
+          <h3>Desarrollo de Software a Medida</h3>
+          <ul class="cat-items">
+            <li><h4>Aplicaciones a Medida</h4><p>Construyo aplicaciones web y de negocio con Node.js, NestJS, Java y Angular, diseñadas en torno a tus procesos reales.</p></li>
+            <li><h4>Microservicios y APIs</h4><p>Diseño arquitecturas de microservicios y APIs robustas, pensadas para escalar sin reescribir todo desde cero.</p></li>
+          </ul>
+        </div>
+        <div class="cat-card">
+          <div class="cat-num">02</div>
+          <h3>IA y Automatización</h3>
+          <ul class="cat-items">
+            <li><h4>Integración de IA en tu Producto</h4><p>Incorporo modelos de IA en tus flujos de trabajo existentes para agregar capacidades inteligentes sin partir de cero.</p></li>
+            <li><h4>Automatización de Procesos</h4><p>Conecto sistemas —incluyendo integraciones bancarias y gubernamentales— para automatizar tareas y reducir errores manuales.</p></li>
+          </ul>
+        </div>
+        <div class="cat-card">
+          <div class="cat-num">03</div>
+          <h3>Modernización y Consultoría</h3>
+          <ul class="cat-items">
+            <li><h4>Migración a la Nube</h4><p>Migro aplicaciones Java y Angular hacia arquitecturas modernas en AWS y Docker, mejorando rendimiento y seguridad.</p></li>
+            <li><h4>Consultoría y Prototipado Rápido</h4><p>Te ayudo a validar ideas rápido: arquitectura, elección de stack y prototipos funcionales apoyados en IA.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="credibility" id="por-que">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="justify-content:center;">Por qué trabajar conmigo</span>
+        <h2>Más de una década de experiencia real</h2>
+        <p>No solo teoría: proyectos reales, en producción, en sectores donde los errores cuestan caro.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">+12 años</div>
+          <p>de experiencia construyendo software para producción, no solo demos.</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Banca · Gobierno · Fintech</div>
+          <p>Proyectos reales en SBPay, Contraloría General de la República de Chile y Previred.</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Stack moderno con foco en IA</div>
+          <p>Node.js, NestJS, Java, Angular, TypeScript, Python, AWS y Docker.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="despues">
+    <div class="container">
+      <div class="maintenance-card">
+        <div>
+          <span class="eyebrow">Después de la entrega</span>
+          <h2 style="margin-top:12px;">No desaparezco después del deploy</h2>
+          <p>Monitoreo, ajustes y soporte continuo para que tu proyecto siga funcionando —y mejorando— con el tiempo.</p>
+          <ul class="maint-list">
+            <li><span class="check">✓</span> Monitoreo y corrección de errores en producción.</li>
+            <li><span class="check">✓</span> Ajustes y nuevas funcionalidades post-lanzamiento.</li>
+            <li><span class="check">✓</span> Canal directo de soporte, sin tickets ni intermediarios.</li>
+          </ul>
+        </div>
+        <div class="maint-visual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#g1)" stroke-width="1.5">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+            <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z"/>
+            <path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="contacto">
+    <div class="container">
+      <div class="contact-card">
+        <span class="eyebrow">Contacto</span>
+        <h2>Hablemos de tu proyecto</h2>
+        <p>Cuéntame qué necesitas y conversemos, sin costo, sobre cómo la IA y una ingeniería sólida pueden acelerar tu próximo proyecto de software.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:pablo.cornejo.v@gmail.com">✉ pablo.cornejo.v@gmail.com</a>
+          <a class="contact-link" href="https://wa.me/56957591164" target="_blank" rel="noopener">📞 +56 9 5759 1164</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/" target="_blank" rel="noopener">in LinkedIn</a>
+        </div>
+        <a href="mailto:pablo.cornejo.v@gmail.com" class="btn btn-primary">Cotizar mi proyecto</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Pablo Cornejo · Software &amp; IA. Todos los derechos reservados.</span>
+      <ul class="footer-links">
+        <li><a href="mailto:pablo.cornejo.v@gmail.com">Email</a></li>
+        <li><a href="https://wa.me/56957591164" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/56957591164" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-2c1.9 1 4 1.6 6.3 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3Zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.6 1.2 1.2-4.4-.2-.4C5.8 18 5.2 16.5 5.2 15c0-5.9 4.9-10.8 10.8-10.8S26.8 9.1 26.8 15 21.9 24.8 16 24.8Zm5.9-8.1c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.2 3.3 5.3 4.6.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></svg>
+  </a>
+
+</body>
+</html>
