@@ -7,9 +7,12 @@ interface Props {
 }
 
 const {
-  title,
-  description = "Desarrollo de software a medida potenciado por Inteligencia Artificial. 12+ años de experiencia en banca y gobierno.",
+  title = "Pablo Cornejo · Desarrollo de Software a Medida con IA",
+  description = "Desarrollo de software a medida e Inteligencia Artificial para banca, gobierno y fintech. +12 años de experiencia en Chile y LATAM. Consultoría gratuita.",
 } = Astro.props;
+
+const siteUrl = "https://pcornejov.github.io/Sitio-pablo/";
+const ogImage = "https://pcornejov.github.io/Sitio-pablo/og-image.png";
 ---
 
 <!doctype html>
@@ -18,10 +21,17 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={siteUrl} />
+    <meta name="theme-color" content="#0B1120" />
     <link
       rel="icon"
       type="image/svg+xml"
       href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/favicon.svg`}
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/apple-touch-icon.png`}
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,8 +40,21 @@ const {
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <slot />
   </body>
 </html>

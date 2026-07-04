@@ -6,11 +6,13 @@ const year = new Date().getFullYear();
   <div class="container footer-inner">
     <div class="footer-links">
       <a href="mailto:pablo.cornejo.v@gmail.com">pablo.cornejo.v@gmail.com</a>
-      <a href="https://wa.me/56957591164" target="_blank" rel="noopener">+56 9 5759 1164</a>
+      <a href="https://wa.me/56957591164" target="_blank" rel="noopener"
+        >+56 9 5759 1164 <span class="visually-hidden">(se abre en una nueva pestaña)</span></a
+      >
       <a
         href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/"
         target="_blank"
-        rel="noopener">LinkedIn</a
+        rel="noopener">LinkedIn <span class="visually-hidden">(se abre en una nueva pestaña)</span></a
       >
     </div>
     <p>&copy; {year} Pablo Cornejo · Software &amp; IA. Todos los derechos reservados.</p>
@@ -29,7 +31,7 @@ const year = new Date().getFullYear();
     gap: var(--space-4);
     align-items: center;
     text-align: center;
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
     font-size: 0.875rem;
   }
 
