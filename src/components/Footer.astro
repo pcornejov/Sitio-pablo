@@ -4,55 +4,60 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div class="footer-links">
-      <a href="mailto:pablo.cornejo.v@gmail.com">pablo.cornejo.v@gmail.com</a>
-      <a href="https://wa.me/56957591164" target="_blank" rel="noopener"
-        >+56 9 5759 1164 <span class="visually-hidden">(se abre en una nueva pestaña)</span></a
-      >
-      <a
-        href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/"
-        target="_blank"
-        rel="noopener">LinkedIn <span class="visually-hidden">(se abre en una nueva pestaña)</span></a
-      >
-    </div>
-    <p>&copy; {year} Pablo Cornejo · Software &amp; IA. Todos los derechos reservados.</p>
+    <span>&copy; {year} Pablo Cornejo · Software &amp; IA. Todos los derechos reservados.</span>
+    <ul class="footer-links">
+      <li><a href="mailto:pablo.cornejo.v@gmail.com">Email</a></li>
+      <li>
+        <a href="https://wa.me/56957591164" target="_blank" rel="noopener"
+          >WhatsApp <span class="visually-hidden">(se abre en una nueva pestaña)</span></a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/"
+          target="_blank"
+          rel="noopener">LinkedIn <span class="visually-hidden">(se abre en una nueva pestaña)</span
+          ></a
+        >
+      </li>
+    </ul>
   </div>
 </footer>
 
 <style>
   .site-footer {
+    background: var(--bg-base);
+    color: var(--text-tertiary);
+    padding: var(--space-6) 0;
     border-top: 1px solid var(--border-subtle);
-    padding-block: var(--space-6);
   }
 
   .footer-inner {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
   }
 
   .footer-links {
     display: flex;
     gap: var(--space-5);
-    flex-wrap: wrap;
-    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   .footer-links a {
-    padding-bottom: 2px;
-    border-bottom: 2px solid transparent;
-    transition:
-      color 0.15s ease,
-      border-color 0.15s ease;
+    text-decoration: none;
+    color: var(--text-tertiary);
+    transition: color 0.15s;
   }
 
   .footer-links a:hover,
   .footer-links a:focus-visible {
-    color: var(--text-secondary);
-    border-bottom-color: var(--accent-cyan);
+    color: var(--cyan);
   }
 </style>

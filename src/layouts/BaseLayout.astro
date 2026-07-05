@@ -7,12 +7,13 @@ interface Props {
 }
 
 const {
-  title = "Pablo Cornejo · Desarrollo de Software a Medida con IA",
-  description = "Desarrollo de software a medida e Inteligencia Artificial para banca, gobierno y fintech. +12 años de experiencia en Chile y LATAM. Consultoría gratuita.",
+  title = "Pablo Cornejo · Desarrollo de Software de Punta a Punta con IA",
+  description = "Desarrollo de software a medida, chatbots de WhatsApp para pedidos y diseño web para negocios locales, además de automatización e integración con IA para banca, gobierno y fintech. +12 años de experiencia en Chile y LATAM.",
 } = Astro.props;
 
 const siteUrl = "https://pcornejov.github.io/Sitio-pablo/";
 const ogImage = "https://pcornejov.github.io/Sitio-pablo/og-image.png";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <!doctype html>
@@ -22,23 +23,9 @@ const ogImage = "https://pcornejov.github.io/Sitio-pablo/og-image.png";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="canonical" href={siteUrl} />
-    <meta name="theme-color" content="#0B1120" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/favicon.svg`}
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/apple-touch-icon.png`}
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="theme-color" content="#0a0a0f" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}/apple-touch-icon.png`} />
     <title>{title}</title>
 
     <meta property="og:type" content="website" />
@@ -52,6 +39,18 @@ const ogImage = "https://pcornejov.github.io/Sitio-pablo/og-image.png";
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <style is:global set:html={`
+      @font-face{font-family:'Orbitron';font-style:normal;font-weight:700;font-display:swap;src:url('${base}/fonts/orbitron-700.woff2') format('woff2');}
+      @font-face{font-family:'Orbitron';font-style:normal;font-weight:900;font-display:swap;src:url('${base}/fonts/orbitron-900.woff2') format('woff2');}
+      @font-face{font-family:'Rajdhani';font-style:normal;font-weight:500;font-display:swap;src:url('${base}/fonts/rajdhani-500.woff2') format('woff2');}
+      @font-face{font-family:'Rajdhani';font-style:normal;font-weight:600;font-display:swap;src:url('${base}/fonts/rajdhani-600.woff2') format('woff2');}
+      @font-face{font-family:'Rajdhani';font-style:normal;font-weight:700;font-display:swap;src:url('${base}/fonts/rajdhani-700.woff2') format('woff2');}
+      @font-face{font-family:'Share Tech Mono';font-style:normal;font-weight:400;font-display:swap;src:url('${base}/fonts/share-tech-mono-400.woff2') format('woff2');}
+      @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('${base}/fonts/inter-400.woff2') format('woff2');}
+      @font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('${base}/fonts/inter-500.woff2') format('woff2');}
+      @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('${base}/fonts/inter-600.woff2') format('woff2');}
+    `} />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>

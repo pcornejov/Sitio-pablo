@@ -4,32 +4,38 @@
 <header class="site-header">
   <div class="container header-inner">
     <div class="brand">
-      <span class="brand-name">Pablo Cornejo</span>
-      <span class="brand-badge">Software &amp; IA</span>
+      Pablo Cornejo <span class="brand-badge">Software &amp; IA</span>
     </div>
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
+    <nav aria-label="Navegación principal">
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#por-que">Por qué</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
     </nav>
     <div class="header-actions">
-      <a href="#contacto" class="btn btn-primary btn-sm">Contáctame</a>
+      <a
+        href="https://wa.me/56957591164"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-secondary btn-sm"
+      >
+        Escribir por WhatsApp
+        <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+      </a>
+      <a href="#contacto" class="btn btn-primary btn-sm">Cotizar proyecto</a>
     </div>
   </div>
 </header>
-
-<nav class="mobile-quicklinks" aria-label="Navegación rápida">
-  <a href="#servicios">Servicios</a>
-  <span class="dot">·</span>
-  <a href="#contacto">Contacto</a>
-</nav>
 
 <style>
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
-    background: rgba(11, 17, 32, 0.75);
-    backdrop-filter: blur(8px);
+    z-index: 80;
+    background: rgba(10, 10, 15, 0.86);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-subtle);
   }
 
@@ -37,53 +43,60 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 72px;
+    height: 76px;
+    gap: var(--space-4);
   }
 
   .brand {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-  }
-
-  .brand-name {
-    font-family: var(--font-heading);
+    gap: var(--space-3);
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.05rem;
-    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    flex-shrink: 0;
   }
 
   .brand-badge {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--text-secondary);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
-    border-radius: 999px;
-    padding: 0.2rem 0.6rem;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--bg-base);
+    background: var(--cyan);
+    padding: 3px 9px;
+    border-radius: 2px;
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     gap: var(--space-6);
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 1rem;
   }
 
   .nav-links a {
-    padding-bottom: 2px;
+    text-decoration: none;
+    color: var(--text-secondary);
     border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
     transition:
-      color 0.15s ease,
-      border-color 0.15s ease;
+      color 0.15s,
+      border-color 0.15s,
+      text-shadow 0.15s;
   }
 
   .nav-links a:hover,
   .nav-links a:focus-visible {
     color: var(--text-primary);
-    border-bottom-color: var(--accent-cyan);
+    border-color: var(--cyan);
+    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
   }
 
   .header-actions {
@@ -92,45 +105,18 @@
     gap: var(--space-4);
   }
 
-  /* ---------- Mobile-only quicklinks bar ---------- */
-  .mobile-quicklinks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-2);
-    height: 40px;
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .mobile-quicklinks a {
-    padding: 4px 2px;
-    transition: color 0.15s ease;
-  }
-
-  .mobile-quicklinks a:hover,
-  .mobile-quicklinks a:focus-visible {
-    color: var(--text-primary);
-  }
-
-  .mobile-quicklinks .dot {
-    color: var(--text-tertiary);
-  }
-
-  @media (min-width: 641px) {
+  @media (max-width: 900px) {
     .nav-links {
-      display: flex;
+      display: none;
     }
-
-    .mobile-quicklinks {
+    .header-actions .btn-secondary {
       display: none;
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 480px) {
     .header-inner {
-      height: 64px;
+      gap: var(--space-2);
     }
     .brand-badge {
       display: none;

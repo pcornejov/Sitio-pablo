@@ -2,54 +2,82 @@
 ---
 
 <section class="hero" id="inicio">
+  <div class="hero-grid-floor" aria-hidden="true"></div>
+  <div class="hero-horizon-glow" aria-hidden="true"></div>
   <div class="container hero-inner">
-    <span class="eyebrow">Desarrollo de software impulsado por Inteligencia Artificial</span>
-    <h1>Software a medida, entregado más rápido gracias a la IA</h1>
-    <p class="subheadline">
-      Diseño y desarrollo soluciones de software para tu negocio, combinando ingeniería sólida
-      con inteligencia artificial de última generación: entregas más rápidas, menos errores y
-      productos que evolucionan contigo.
+    <span class="eyebrow"
+      >Desarrollo de software de punta a punta, impulsado por IA · Para empresas y negocios
+      locales</span
+    >
+    <h1>
+      Software de punta a punta, <span class="accent">mucho más rápido</span> gracias a la IA
+    </h1>
+    <p class="hero-sub">
+      Desarrollo tu software de principio a fin —arquitectura, backend, frontend e
+      integraciones— usando IA en cada etapa para entregar mucho más rápido, sin sacrificar
+      calidad ni seguridad.
     </p>
     <div class="hero-ctas">
-      <a href="#contacto" class="btn btn-primary">Agenda una consultoría gratuita</a>
-      <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+      <a href="#contacto" class="btn btn-primary">Cotizar proyecto</a>
+      <a href="https://wa.me/56957591164" target="_blank" rel="noopener" class="btn btn-secondary">
+        Escribir por WhatsApp
+        <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+      </a>
     </div>
-    <p class="hero-trust">
-      +12 años de experiencia · Banca, gobierno y fintech (SBPay, Previred, Contraloría General
-      de la República)
-    </p>
+    <p class="trust-line"><strong>+12 años de experiencia</strong> · Banca, gobierno y fintech</p>
   </div>
 </section>
 
 <style>
   .hero {
     position: relative;
-    padding-block: clamp(4rem, 12vw, 7rem);
     overflow: hidden;
+    padding: var(--space-9) 0 var(--space-8);
+    background: var(--bg-base);
+  }
+
+  .hero-grid-floor {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    bottom: -10%;
+    height: 65%;
+    background-image:
+      linear-gradient(rgba(var(--magenta-rgb), 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--cyan-rgb), 0.4) 1px, transparent 1px);
+    background-size: 44px 44px;
+    transform: perspective(480px) rotateX(62deg);
+    transform-origin: bottom center;
+    -webkit-mask-image: linear-gradient(to top, black 10%, transparent 82%);
+    mask-image: linear-gradient(to top, black 10%, transparent 82%);
+    pointer-events: none;
+  }
+
+  .hero-horizon-glow {
+    position: absolute;
+    left: 50%;
+    bottom: 32%;
+    width: 120%;
+    height: 280px;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(var(--magenta-rgb), 0.28), transparent 70%);
+    pointer-events: none;
+    filter: blur(8px);
   }
 
   .hero::before {
     content: "";
     position: absolute;
-    top: -20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(900px, 140vw);
-    height: 600px;
-    background: radial-gradient(
-      closest-side,
-      rgba(139, 92, 246, 0.2),
-      rgba(34, 211, 238, 0.1) 55%,
-      transparent 75%
-    );
+    inset: 0;
+    background:
+      radial-gradient(600px 420px at 15% 0%, rgba(var(--cyan-rgb), 0.13), transparent 60%),
+      radial-gradient(600px 420px at 90% 15%, rgba(var(--magenta-rgb), 0.13), transparent 60%);
     pointer-events: none;
-    z-index: 0;
   }
 
   .hero-inner {
     position: relative;
-    z-index: 1;
-    max-width: 760px;
+    max-width: 780px;
     margin-inline: auto;
     text-align: center;
     display: flex;
@@ -58,49 +86,44 @@
     gap: var(--space-5);
   }
 
-  .eyebrow {
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-cyan);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .eyebrow::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gradient-ai);
-  }
-
   .hero h1 {
-    font-size: clamp(2rem, 5vw + 1rem, 3.25rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.1rem, 3.6vw + 1rem, 3.35rem);
+    font-weight: 900;
+    line-height: 1.12;
   }
 
-  .hero p.subheadline {
+  .hero .accent {
+    color: var(--magenta);
+    text-shadow:
+      0 0 18px rgba(var(--magenta-rgb), 0.55),
+      0 0 42px rgba(var(--magenta-rgb), 0.25);
+  }
+
+  .hero-sub {
+    font-family: var(--font-body);
     font-size: 1.0625rem;
     color: var(--text-secondary);
-    max-width: 640px;
+    max-width: 620px;
   }
 
   .hero-ctas {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--space-4);
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: var(--space-2);
   }
 
-  .hero-trust {
-    margin-top: var(--space-4);
-    font-size: 0.875rem;
-    color: var(--text-secondary);
+  .trust-line {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    margin-top: var(--space-2);
+    letter-spacing: 0.02em;
+  }
+
+  .trust-line strong {
+    color: var(--green);
+    font-weight: 400;
+    text-shadow: 0 0 8px rgba(var(--green-rgb), 0.5);
   }
 </style>
