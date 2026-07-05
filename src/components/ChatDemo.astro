@@ -22,28 +22,28 @@
           </div>
         </div>
         <div class="chat-body">
-          <div class="bubble bubble-user" style="animation-delay:.2s">
+          <div class="bubble bubble-user anim-bubble" style="animation-delay:.2s">
             Hola! Quiero pedir 2 pizzas familiares
           </div>
-          <div class="typing" style="animation-delay:.9s"><span></span><span></span><span
+          <div class="typing anim-typing" style="animation-delay:.9s"><span></span><span></span><span
             ></span></div>
-          <div class="bubble bubble-bot" style="animation-delay:2.4s">
+          <div class="bubble bubble-bot anim-bubble" style="animation-delay:2.4s">
             ¡Hola! 👋 Con gusto. ¿Qué pizzas te gustaría? Tenemos Pepperoni, Vegetariana y Cuatro
             Quesos.
           </div>
-          <div class="bubble bubble-user" style="animation-delay:3s">
+          <div class="bubble bubble-user anim-bubble" style="animation-delay:3s">
             1 Pepperoni y 1 Cuatro Quesos
           </div>
-          <div class="typing" style="animation-delay:3.6s"><span></span><span></span><span
+          <div class="typing anim-typing" style="animation-delay:3.6s"><span></span><span></span><span
             ></span></div>
-          <div class="bubble bubble-bot" style="animation-delay:5.1s">
+          <div class="bubble bubble-bot anim-bubble" style="animation-delay:5.1s">
             Perfecto ✅ Pedido: 1 Pepperoni + 1 Cuatro Quesos. Total: $18.990. ¿Confirmas el
             pedido?
           </div>
-          <div class="bubble bubble-user" style="animation-delay:5.7s">Sí, confirmo</div>
-          <div class="typing" style="animation-delay:6.3s"><span></span><span></span><span
+          <div class="bubble bubble-user anim-bubble" style="animation-delay:5.7s">Sí, confirmo</div>
+          <div class="typing anim-typing" style="animation-delay:6.3s"><span></span><span></span><span
             ></span></div>
-          <div class="bubble bubble-bot" style="animation-delay:7.8s">
+          <div class="bubble bubble-bot anim-bubble" style="animation-delay:7.8s">
             🎉 Pedido confirmado #A1042. Tiempo estimado: 35 min. ¡Gracias por tu compra!
           </div>
         </div>
@@ -147,6 +147,7 @@
     flex-direction: column;
     gap: 10px;
     min-height: 360px;
+    transition: opacity 0.35s ease;
   }
 
   .bubble {
@@ -157,6 +158,9 @@
     font-size: 0.84375rem;
     line-height: 1.45;
     opacity: 0;
+  }
+
+  .anim-bubble {
     animation: bubbleIn 0.5s ease forwards;
   }
 
@@ -197,6 +201,9 @@
     background: rgba(var(--magenta-rgb), 0.14);
     border: 1px solid rgba(var(--magenta-rgb), 0.4);
     opacity: 0;
+  }
+
+  .anim-typing {
     animation: typingFade 1.6s ease forwards;
   }
 
@@ -255,3 +262,43 @@
     }
   }
 </style>
+
+<script>
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    const chatBody = document.querySelector<HTMLElement>("#demo .chat-body");
+    const animEls = chatBody
+      ? Array.from(chatBody.querySelectorAll<HTMLElement>(".bubble, .typing"))
+      : [];
+
+    const restartChatDemo = () => {
+      if (!chatBody || !animEls.length) return;
+
+      // Fade the whole conversation out briefly.
+      chatBody.style.opacity = "0";
+
+      window.setTimeout(() => {
+        // Drop the animation class so each bubble/typing dot resets to its
+        // base (opacity: 0) state, without touching the inline
+        // `animation-delay` that keeps the stagger timing intact.
+        animEls.forEach((el) => {
+          el.classList.remove(el.classList.contains("typing") ? "anim-typing" : "anim-bubble");
+        });
+
+        // Force a reflow so the browser registers the class removal before
+        // we add it back — otherwise the animation won't restart.
+        void chatBody.offsetWidth;
+
+        animEls.forEach((el) => {
+          el.classList.add(el.classList.contains("typing") ? "anim-typing" : "anim-bubble");
+        });
+
+        // Fade the conversation back in as it replays from the start.
+        chatBody.style.opacity = "1";
+      }, 350);
+    };
+
+    window.setInterval(restartChatDemo, 12000);
+  }
+</script>

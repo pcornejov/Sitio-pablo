@@ -59,6 +59,31 @@ import Footer from "../components/Footer.astro";
       box-shadow 0.2s ease;
   }
 
+  .wa-float::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--green-rgb), 0.45), transparent 72%);
+    animation: waPulse 2.8s ease-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  @keyframes waPulse {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.6;
+    }
+    70% {
+      opacity: 0.08;
+    }
+    100% {
+      transform: scale(1.55);
+      opacity: 0;
+    }
+  }
+
   .wa-float:hover,
   .wa-float:focus-visible {
     transform: scale(1.08);

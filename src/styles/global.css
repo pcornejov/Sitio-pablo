@@ -212,6 +212,24 @@ button:focus-visible,
   border: 0;
 }
 
+/* ---------- Scroll reveal (progressive enhancement) ---------- */
+/* The `js-reveal` class is added synchronously by an inline script in
+   BaseLayout.astro's <head>, only when JS runs and the user does not
+   prefer reduced motion — so without JS, or with reduced motion, `.reveal`
+   elements are simply visible with no hidden state and no transition. */
+html.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+html.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {

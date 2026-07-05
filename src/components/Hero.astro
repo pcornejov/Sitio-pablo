@@ -24,7 +24,7 @@
         <span class="visually-hidden">(se abre en una nueva pestaña)</span>
       </a>
     </div>
-    <p class="trust-line"><strong>+12 años de experiencia</strong> · Banca, gobierno y fintech</p>
+    <p class="trust-line"><strong>+15 años de experiencia</strong> · Banca, gobierno y fintech</p>
   </div>
 </section>
 
@@ -63,6 +63,19 @@
     background: radial-gradient(closest-side, rgba(var(--magenta-rgb), 0.28), transparent 70%);
     pointer-events: none;
     filter: blur(8px);
+    animation: heroGlowBreathe 7s ease-in-out infinite;
+  }
+
+  @keyframes heroGlowBreathe {
+    0%,
+    100% {
+      opacity: 0.85;
+      transform: translateX(-50%) scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.06);
+    }
   }
 
   .hero::before {
