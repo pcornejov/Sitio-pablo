@@ -1,0 +1,107 @@
+---
+const faqs = [
+  {
+    q: "¿Es un pago único o tiene mensualidad?",
+    a: "Depende del servicio. Una página web simple normalmente es un pago único, sin mensualidades. Un software a medida se cotiza según el alcance del proyecto, y puede incluir un plan de soporte continuo si lo necesitas — te lo dejo claro antes de empezar.",
+  },
+  {
+    q: "¿Qué incluye el servicio completo de software a medida?",
+    a: "Además del desarrollo, incluye la construcción de tu página web si la necesitas, reuniones online periódicas de seguimiento, y un roadmap con los objetivos y tiempos del proyecto, para que sepas siempre en qué etapa estamos.",
+  },
+  {
+    q: "¿Necesito soporte después de que mi proyecto esté listo?",
+    a: "Si es una web simple, normalmente no. Si es un software a medida, es recomendable — pero eso también se cotiza aparte y solo si tú lo quieres.",
+  },
+  {
+    q: "¿Cómo empezamos?",
+    a: "Conversamos tu idea sin costo y te preparo una cotización según lo que necesites.",
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="justify-content:center;">Preguntas Frecuentes</span>
+      <h2>Lo que más me preguntan</h2>
+    </div>
+    <div class="faq-list">
+      {
+        faqs.map((item) => (
+          <div class="faq-item reveal">
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .faq-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 980px;
+    margin-inline: auto;
+  }
+
+  .faq-item {
+    position: relative;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .faq-item::before,
+  .faq-item::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+  }
+
+  .faq-item::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+  }
+
+  .faq-item::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid var(--magenta);
+    border-right: 2px solid var(--magenta);
+  }
+
+  .faq-item h3 {
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text-primary);
+  }
+
+  .faq-item p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 720px) {
+    .faq-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
