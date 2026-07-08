@@ -28,7 +28,7 @@ const faqs = [
     <div class="faq-list">
       {
         faqs.map((item) => (
-          <div class="faq-item reveal">
+          <div class="faq-item reveal corner-brackets">
             <h3>{item.q}</h3>
             <p>{item.a}</p>
           </div>
@@ -54,36 +54,13 @@ const faqs = [
   }
 
   .faq-item {
-    position: relative;
+    --bracket-size: 16px;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
     padding: var(--space-5);
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-  }
-
-  .faq-item::before,
-  .faq-item::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    pointer-events: none;
-  }
-
-  .faq-item::before {
-    top: -1px;
-    left: -1px;
-    border-top: 2px solid var(--cyan);
-    border-left: 2px solid var(--cyan);
-  }
-
-  .faq-item::after {
-    bottom: -1px;
-    right: -1px;
-    border-bottom: 2px solid var(--magenta);
-    border-right: 2px solid var(--magenta);
   }
 
   .faq-item h3 {

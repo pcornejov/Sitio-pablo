@@ -8,15 +8,15 @@
       <h2>La misma seriedad, ahora para tu negocio</h2>
     </div>
     <div class="stats-grid">
-      <div class="stat-card reveal">
+      <div class="stat-card reveal corner-brackets">
         <div class="stat-num">+15 AÑOS</div>
         <p>de experiencia construyendo software para producción, no solo demos.</p>
       </div>
-      <div class="stat-card reveal">
+      <div class="stat-card reveal corner-brackets">
         <div class="stat-num">BANCA · GOBIERNO · FINTECH</div>
         <p>Proyectos reales en los sectores bancario, gubernamental y fintech.</p>
       </div>
-      <div class="stat-card reveal">
+      <div class="stat-card reveal corner-brackets">
         <div class="stat-num">STACK MODERNO CON FOCO EN IA</div>
         <p>
           Node.js, NestJS, Java, Angular, TypeScript, Python, AWS y Docker — aplicados hoy a
@@ -45,7 +45,7 @@
   }
 
   .stat-card {
-    position: relative;
+    --bracket-size: 16px;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
     padding: var(--space-6);
@@ -55,17 +55,6 @@
 
   .stat-card:nth-child(3) {
     grid-column: span 4;
-  }
-
-  .stat-card::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 16px;
-    height: 16px;
-    border-top: 2px solid var(--green);
-    border-left: 2px solid var(--green);
   }
 
   .stat-num {
