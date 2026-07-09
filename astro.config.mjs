@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pcornejov.github.io',
-  base: '/Sitio-pablo',
+  site: 'https://www.pablocornejo.cl',
+  base: '/',
   integrations: [sitemap()],
 });

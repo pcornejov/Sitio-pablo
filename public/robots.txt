@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pcornejov.github.io/Sitio-pablo/sitemap-index.xml
+Sitemap: https://www.pablocornejo.cl/sitemap-index.xml
