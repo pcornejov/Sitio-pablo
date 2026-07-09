@@ -33,7 +33,7 @@ import WhatsAppIcon from "../components/WhatsAppIcon.astro";
     rel="noopener"
     aria-label="Escríbeme por WhatsApp"
   >
-    <WhatsAppIcon />
+    <WhatsAppIcon size={30} />
   </a>
 </BaseLayout>
 
@@ -47,6 +47,7 @@ import WhatsAppIcon from "../components/WhatsAppIcon.astro";
     height: 58px;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #3dffb0, #17c98a);
+    color: #06110c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,9 +95,4 @@ import WhatsAppIcon from "../components/WhatsAppIcon.astro";
       0 0 34px 6px rgba(var(--green-rgb), 0.5);
   }
 
-  .wa-float svg {
-    width: 30px;
-    height: 30px;
-    fill: #06110c;
-  }
 </style>
