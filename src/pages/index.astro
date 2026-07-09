@@ -11,6 +11,10 @@ import Faq from "../components/Faq.astro";
 import Contacto from "../components/Contacto.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppIcon from "../components/WhatsAppIcon.astro";
+
+const waMessage = encodeURIComponent(
+  "Hola Pablo, vi tu sitio web y me interesa conversar sobre un proyecto 👋",
+);
 ---
 
 <BaseLayout title="Pablo Cornejo · Desarrollo de Software de Punta a Punta con IA">
@@ -28,7 +32,7 @@ import WhatsAppIcon from "../components/WhatsAppIcon.astro";
   <Footer />
   <a
     class="wa-float"
-    href="https://wa.me/56957591164"
+    href={`https://wa.me/56957591164?text=${waMessage}`}
     target="_blank"
     rel="noopener"
     aria-label="Escríbeme por WhatsApp"
