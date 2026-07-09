@@ -1,0 +1,251 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const clientes = [
+  {
+    nombre: "Grúas Sepu",
+    descripcion:
+      "Sitio web para empresa de remolque y transporte de vehículos y maquinaria en la Región de Ñuble.",
+    url: "https://gruassepu.cl",
+    imagen: "gruas-sepu.jpg",
+  },
+];
+---
+
+<section class="clients" id="clientes">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="justify-content:center;">Clientes</span>
+      <h2>Proyectos reales, ya en producción</h2>
+    </div>
+    <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Clientes">
+      <div class="carousel-track">
+        {
+          clientes.map((c) => (
+            <article class="client-card corner-brackets">
+              <div class="client-logo-badge">
+                <img src={`${base}/clients/${c.imagen}`} alt={`Logo de ${c.nombre}`} loading="lazy" />
+              </div>
+              <h3>{c.nombre}</h3>
+              <p>{c.descripcion}</p>
+              <a href={c.url} class="btn btn-secondary btn-sm" target="_blank" rel="noopener">
+                Visitar sitio
+                <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+      {
+        clientes.length > 1 && (
+          <>
+            <button class="carousel-arrow carousel-prev" aria-label="Cliente anterior">
+              ‹
+            </button>
+            <button class="carousel-arrow carousel-next" aria-label="Cliente siguiente">
+              ›
+            </button>
+            <div class="carousel-dots">
+              {clientes.map((c, i) => (
+                <button class="carousel-dot" aria-label={`Ver ${c.nombre}`} data-dot={i} />
+              ))}
+            </div>
+          </>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .clients {
+    background: var(--bg-base);
+  }
+
+  .carousel {
+    position: relative;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .carousel-track {
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+  }
+
+  .client-card {
+    --bracket-size: 16px;
+    flex: 0 0 100%;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  .client-logo-badge {
+    background: #f5f5fa;
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .client-logo-badge img {
+    width: 100%;
+    height: auto;
+  }
+
+  .client-card h3 {
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+  }
+
+  .client-card p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    max-width: 480px;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-elevated-2);
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .carousel-arrow:hover,
+  .carousel-arrow:focus-visible {
+    border-color: var(--cyan);
+    box-shadow: 0 0 16px 2px rgba(var(--cyan-rgb), 0.35);
+  }
+
+  .carousel-prev {
+    left: -20px;
+  }
+
+  .carousel-next {
+    right: -20px;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+  }
+
+  .carousel-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s ease;
+  }
+
+  .carousel-dot[aria-current="true"] {
+    background: var(--magenta);
+    box-shadow: 0 0 8px 1px rgba(var(--magenta-rgb), 0.5);
+  }
+
+  @media (max-width: 640px) {
+    .carousel-arrow {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll<HTMLElement>(".carousel").forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>(".carousel-track");
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>(".client-card"));
+    const prevBtn = carousel.querySelector<HTMLButtonElement>(".carousel-prev");
+    const nextBtn = carousel.querySelector<HTMLButtonElement>(".carousel-next");
+    const dots = Array.from(carousel.querySelectorAll<HTMLButtonElement>(".carousel-dot"));
+
+    if (!track || slides.length <= 1) return;
+
+    let index = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    function goTo(i: number) {
+      index = (i + slides.length) % slides.length;
+      track!.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => {
+        if (di === index) d.setAttribute("aria-current", "true");
+        else d.removeAttribute("aria-current");
+      });
+    }
+
+    function next() {
+      goTo(index + 1);
+    }
+    function prev() {
+      goTo(index - 1);
+    }
+
+    function stopAutoplay() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    function startAutoplay() {
+      if (prefersReducedMotion) return;
+      stopAutoplay();
+      timer = setInterval(next, 6000);
+    }
+
+    prevBtn?.addEventListener("click", () => {
+      prev();
+      startAutoplay();
+    });
+    nextBtn?.addEventListener("click", () => {
+      next();
+      startAutoplay();
+    });
+    dots.forEach((dot, i) =>
+      dot.addEventListener("click", () => {
+        goTo(i);
+        startAutoplay();
+      }),
+    );
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", (e: FocusEvent) => {
+      if (!carousel.contains(e.relatedTarget as Node)) startAutoplay();
+    });
+
+    goTo(0);
+    startAutoplay();
+  });
+</script>
