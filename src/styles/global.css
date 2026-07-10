@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  overscroll-behavior-y: none;
 }
 
 h1,
