@@ -1,10 +1,10 @@
 ---
 ---
 
-<section class="demo" id="demo">
+<section class="demo" id="chatbot">
   <div class="container demo-layout">
     <div class="demo-copy">
-      <span class="eyebrow">Demo en vivo</span>
+      <span class="eyebrow">Así funciona</span>
       <h2 style="margin-top:12px;">Chatbots que venden por ti, 24/7</h2>
       <p>
         Un cliente escribe, tu chatbot responde, toma el pedido y confirma la compra — sin que
@@ -267,7 +267,7 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!prefersReducedMotion) {
-    const chatBody = document.querySelector<HTMLElement>("#demo .chat-body");
+    const chatBody = document.querySelector<HTMLElement>("#chatbot .chat-body");
     const animEls = chatBody
       ? Array.from(chatBody.querySelectorAll<HTMLElement>(".bubble, .typing"))
       : [];
