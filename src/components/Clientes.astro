@@ -28,10 +28,13 @@ const clientes = [
               </div>
               <h3>{c.nombre}</h3>
               <p>{c.descripcion}</p>
-              <a href={c.url} class="btn btn-secondary btn-sm" target="_blank" rel="noopener">
-                Visitar sitio
-                <span class="visually-hidden">(se abre en una nueva pestaña)</span>
-              </a>
+              <div class="client-card-links">
+                <a href="/casos/gruas-sepu" class="btn btn-primary btn-sm">Ver caso completo</a>
+                <a href={c.url} class="btn btn-secondary btn-sm" target="_blank" rel="noopener">
+                  Visitar sitio
+                  <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+                </a>
+              </div>
             </article>
           ))
         }
@@ -114,6 +117,13 @@ const clientes = [
     font-size: 0.9375rem;
     color: var(--text-secondary);
     max-width: 480px;
+  }
+
+  .client-card-links {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .carousel-arrow {
