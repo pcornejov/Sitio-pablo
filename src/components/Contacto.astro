@@ -12,8 +12,8 @@ const waMessage = encodeURIComponent(
       <span class="eyebrow">Contacto</span>
       <h2>Hablemos de tu proyecto</h2>
       <p>
-        Cuéntame qué necesitas y conversemos sobre cómo la IA y una ingeniería sólida pueden
-        acelerar tu próximo proyecto.
+        Cuéntame qué necesitas —una web, un chatbot o un sistema a medida— y conversemos sin
+        compromiso.
       </p>
       <div class="contact-icons">
         <a
@@ -220,12 +220,15 @@ const waMessage = encodeURIComponent(
 
   .contact-form-toggle summary {
     cursor: pointer;
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    letter-spacing: 0.04em;
-    color: var(--text-tertiary);
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    color: var(--cyan);
     text-align: center;
     list-style: none;
+    border-bottom: 1px dashed rgba(var(--cyan-rgb), 0.5);
+    padding-bottom: 2px;
   }
 
   .contact-form-toggle summary::-webkit-details-marker {
@@ -234,7 +237,7 @@ const waMessage = encodeURIComponent(
 
   .contact-form-toggle summary:hover,
   .contact-form-toggle summary:focus-visible {
-    color: var(--cyan);
+    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.5);
   }
 
   .contact-form {
