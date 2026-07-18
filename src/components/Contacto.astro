@@ -20,6 +20,7 @@ const waMessage = encodeURIComponent(
           class="icon-btn icon-email"
           href="mailto:pablo.cornejo.v@gmail.com"
           aria-label="Escríbeme un correo a pablo.cornejo.v@gmail.com"
+          data-cta="contacto-email"
         >
           <span class="icon-circle">
             <svg
@@ -42,6 +43,7 @@ const waMessage = encodeURIComponent(
           target="_blank"
           rel="noopener"
           aria-label="Escríbeme por WhatsApp al +56 9 5759 1164"
+          data-cta="contacto-whatsapp"
         >
           <span class="icon-circle">
             <WhatsAppIcon size={26} />
@@ -65,7 +67,11 @@ const waMessage = encodeURIComponent(
           <span class="icon-label">LinkedIn</span>
         </a>
       </div>
-      <a href="mailto:pablo.cornejo.v@gmail.com" class="btn btn-primary">Cotizar proyecto</a>
+      <a
+        href="mailto:pablo.cornejo.v@gmail.com"
+        class="btn btn-primary"
+        data-cta="contacto-cotizar">Cotizar proyecto</a
+      >
     </div>
   </div>
 </section>

@@ -1,4 +1,7 @@
 ---
+const waMessage = encodeURIComponent(
+  "Hola Pablo, vi tu sitio y quiero cotizar un proyecto 🚀",
+);
 ---
 
 <section class="hero" id="inicio">
@@ -19,7 +22,13 @@
     </p>
     <div class="hero-ctas">
       <a href="#contacto" class="btn btn-primary">Cotizar proyecto</a>
-      <a href="https://wa.me/56957591164" target="_blank" rel="noopener" class="btn btn-secondary">
+      <a
+        href={`https://wa.me/56957591164?text=${waMessage}`}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-secondary"
+        data-cta="hero-whatsapp"
+      >
         Escribir por WhatsApp
         <span class="visually-hidden">(se abre en una nueva pestaña)</span>
       </a>

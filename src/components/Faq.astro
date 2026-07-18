@@ -17,7 +17,22 @@ const faqs = [
     a: "Conversamos tu idea sin costo y te preparo una cotización según lo que necesites.",
   },
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
 ---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
 
 <section class="faq" id="faq">
   <div class="container">
