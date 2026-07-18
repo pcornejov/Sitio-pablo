@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const waMessage = encodeURIComponent(
+  "Hola Pablo, vi el caso de Grúas Sepu y quiero un sitio para mi negocio 👋",
+);
+---
+
+<BaseLayout
+  title="Caso: sitio web para Grúas Sepu · Pablo Cornejo"
+  description="Cómo diseñé y desarrollé el sitio web de Grúas Sepu, empresa de remolque y transporte de vehículos y maquinaria en la Región de Ñuble, para darle presencia profesional online."
+>
+  <Header />
+  <main id="main-content">
+    <section class="case">
+      <div class="container case-inner">
+        <span class="eyebrow">Caso de estudio</span>
+        <h1>Sitio web para <span class="accent">Grúas Sepu</span></h1>
+        <p class="case-sub">
+          Remolque y transporte de vehículos y maquinaria en la Región de Ñuble.
+        </p>
+
+        <div class="case-grid">
+          <div class="case-card corner-brackets">
+            <h2>El problema</h2>
+            <p>
+              Grúas Sepu recibía la mayoría de sus contactos por boca a boca y redes sociales,
+              sin un lugar propio donde un cliente nuevo pudiera confirmar rápido qué servicios
+              ofrecen, en qué zonas trabajan y cómo contactarlos.
+            </p>
+          </div>
+          <div class="case-card corner-brackets">
+            <h2>Lo que construí</h2>
+            <p>
+              Una landing page rápida y responsiva, pensada para que alguien que necesita una
+              grúa con urgencia encuentre en segundos el número de contacto y el detalle de los
+              servicios, sin depender de que Instagram o Facebook estén cargados en ese momento.
+            </p>
+          </div>
+          <div class="case-card corner-brackets">
+            <h2>Stack</h2>
+            <p>
+              Sitio estático, optimizado para carga rápida en conexiones móviles —el escenario
+              más común para alguien buscando una grúa desde la carretera— y con el número de
+              WhatsApp como principal canal de contacto.
+            </p>
+          </div>
+        </div>
+
+        <div class="case-ctas">
+          <a
+            href="https://gruassepu.cl"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-secondary"
+          >
+            Visitar gruassepu.cl
+            <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+          </a>
+          <a
+            href={`https://wa.me/56957591164?text=${waMessage}`}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            Quiero un sitio así
+            <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .case {
+    background: var(--bg-base);
+  }
+
+  .case-inner {
+    max-width: 820px;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .case h1 {
+    font-size: clamp(2rem, 3.2vw + 1rem, 2.9rem);
+    font-weight: 900;
+    line-height: 1.15;
+  }
+
+  .case h1 .accent {
+    color: var(--magenta);
+    text-shadow:
+      0 0 18px rgba(var(--magenta-rgb), 0.55),
+      0 0 42px rgba(var(--magenta-rgb), 0.25);
+  }
+
+  .case-sub {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin-top: var(--space-4);
+    text-align: left;
+  }
+
+  .case-card {
+    --bracket-size: 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .case-card h2 {
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--cyan);
+  }
+
+  .case-card p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+  }
+
+  .case-ctas {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--space-4);
+  }
+
+  @media (max-width: 720px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

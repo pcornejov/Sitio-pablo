@@ -72,6 +72,24 @@ const waMessage = encodeURIComponent(
         class="btn btn-primary"
         data-cta="contacto-cotizar">Cotizar proyecto</a
       >
+
+      <details class="contact-form-toggle">
+        <summary>O escríbeme un mensaje directo</summary>
+        <form id="contact-form" class="contact-form">
+          <label>
+            <span>Tu nombre</span>
+            <input type="text" name="nombre" required autocomplete="name" />
+          </label>
+          <label>
+            <span>Tu mensaje</span>
+            <textarea name="mensaje" rows="4" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-secondary" data-cta="contacto-form">
+            Abrir mensaje en mi correo
+          </button>
+          <p class="contact-form-hint">Se abrirá tu aplicación de correo con el mensaje listo para enviar.</p>
+        </form>
+      </details>
     </div>
   </div>
 </section>
@@ -193,4 +211,86 @@ const waMessage = encodeURIComponent(
     border-color: var(--magenta);
     box-shadow: 0 0 20px 2px rgba(var(--magenta-rgb), 0.4);
   }
+
+  .contact-form-toggle {
+    width: 100%;
+    max-width: 420px;
+    margin-top: var(--space-2);
+  }
+
+  .contact-form-toggle summary {
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--text-tertiary);
+    text-align: center;
+    list-style: none;
+  }
+
+  .contact-form-toggle summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .contact-form-toggle summary:hover,
+  .contact-form-toggle summary:focus-visible {
+    color: var(--cyan);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    text-align: left;
+  }
+
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    background: var(--bg-elevated-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+    resize: vertical;
+  }
+
+  .contact-form input:focus-visible,
+  .contact-form textarea:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+  }
+
+  .contact-form-hint {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    max-width: none;
+    text-align: center;
+  }
 </style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const nombre = (data.get("nombre") as string) ?? "";
+    const mensaje = (data.get("mensaje") as string) ?? "";
+    const subject = encodeURIComponent(`Consulta desde el sitio · ${nombre}`);
+    const body = encodeURIComponent(`${mensaje}\n\n— ${nombre}`);
+    window.location.href = `mailto:pablo.cornejo.v@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>

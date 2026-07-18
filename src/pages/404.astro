@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const waMessage = encodeURIComponent("Hola Pablo, llegué a una página que no existe en tu sitio 🤔");
+---
+
+<BaseLayout title="Página no encontrada · Pablo Cornejo" description="Esta página no existe.">
+  <Header />
+  <main id="main-content">
+    <section class="not-found">
+      <div class="container not-found-inner">
+        <span class="eyebrow">Error 404</span>
+        <h1>Esta página se perdió en el deploy</h1>
+        <p>
+          El link que seguiste no existe o cambió de lugar. Vuelve al inicio o escríbeme si crees
+          que esto es un error.
+        </p>
+        <div class="not-found-ctas">
+          <a href="/" class="btn btn-primary">Volver al inicio</a>
+          <a
+            href={`https://wa.me/56957591164?text=${waMessage}`}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-secondary"
+          >
+            Avisar por WhatsApp
+            <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--bg-base);
+  }
+
+  .not-found-inner {
+    max-width: 620px;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .not-found h1 {
+    font-size: clamp(1.9rem, 3vw + 1rem, 2.75rem);
+    font-weight: 900;
+    line-height: 1.15;
+  }
+
+  .not-found p {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+  }
+
+  .not-found-ctas {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>
