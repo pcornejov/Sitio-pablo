@@ -1,14 +1,19 @@
 ---
 const year = new Date().getFullYear();
+const waMessage = encodeURIComponent("Hola Pablo, vi tu sitio y tengo una consulta 💬");
 ---
 
 <footer class="site-footer">
   <div class="container footer-inner">
     <span>&copy; {year} Pablo Cornejo · Software &amp; IA. Todos los derechos reservados.</span>
     <ul class="footer-links">
-      <li><a href="mailto:pablo.cornejo.v@gmail.com">Email</a></li>
+      <li><a href="mailto:pablo.cornejo.v@gmail.com" data-cta="footer-email">Email</a></li>
       <li>
-        <a href="https://wa.me/56957591164" target="_blank" rel="noopener"
+        <a
+          href={`https://wa.me/56957591164?text=${waMessage}`}
+          target="_blank"
+          rel="noopener"
+          data-cta="footer-whatsapp"
           >WhatsApp <span class="visually-hidden">(se abre en una nueva pestaña)</span></a
         >
       </li>

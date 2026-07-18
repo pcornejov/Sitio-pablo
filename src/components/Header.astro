@@ -1,4 +1,7 @@
 ---
+const waMessage = encodeURIComponent(
+  "Hola Pablo, vi tu sitio y quiero conversar sobre un proyecto 👋",
+);
 ---
 
 <header class="site-header">
@@ -6,7 +9,7 @@
     <div class="brand">
       Pablo Cornejo <span class="brand-badge">Software &amp; IA</span>
     </div>
-    <nav aria-label="Navegación principal">
+    <nav class="nav-desktop" aria-label="Navegación principal">
       <ul class="nav-links">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#demo">Demo</a></li>
@@ -16,15 +19,52 @@
     </nav>
     <div class="header-actions">
       <a
-        href="https://wa.me/56957591164"
+        href={`https://wa.me/56957591164?text=${waMessage}`}
         target="_blank"
         rel="noopener"
         class="btn btn-secondary btn-sm"
+        data-cta="header-whatsapp"
       >
         Escribir por WhatsApp
         <span class="visually-hidden">(se abre en una nueva pestaña)</span>
       </a>
-      <a href="#contacto" class="btn btn-primary btn-sm">Cotizar proyecto</a>
+      <a href="#contacto" class="btn btn-primary btn-sm" data-cta="header-cotizar"
+        >Cotizar proyecto</a
+      >
+    </div>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menú"
+    >
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Navegación móvil">
+      <ul class="nav-links-mobile">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#por-que">Por qué</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-actions">
+      <a
+        href={`https://wa.me/56957591164?text=${waMessage}`}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-secondary"
+        data-cta="mobile-menu-whatsapp"
+      >
+        Escribir por WhatsApp
+        <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+      </a>
+      <a href="#contacto" class="btn btn-primary" data-cta="mobile-menu-cotizar"
+        >Cotizar proyecto</a
+      >
     </div>
   </div>
 </header>
@@ -45,6 +85,7 @@
     justify-content: space-between;
     height: 76px;
     gap: var(--space-4);
+    position: relative;
   }
 
   .brand {
@@ -105,12 +146,126 @@
     gap: var(--space-4);
   }
 
+  .menu-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .menu-icon,
+  .menu-icon::before,
+  .menu-icon::after {
+    width: 18px;
+    height: 2px;
+    background: var(--text-primary);
+    display: block;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .menu-icon {
+    position: relative;
+  }
+
+  .menu-icon::before,
+  .menu-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .menu-icon::before {
+    top: -6px;
+  }
+
+  .menu-icon::after {
+    top: 6px;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-icon {
+    background: transparent;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
   @media (max-width: 900px) {
-    .nav-links {
+    .nav-desktop,
+    .header-actions {
       display: none;
     }
-    .header-actions .btn-secondary {
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .mobile-menu[hidden] {
       display: none;
+    }
+
+    .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border-strong);
+      padding: var(--space-5) clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .nav-links-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sub);
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    .nav-links-mobile a {
+      text-decoration: none;
+      color: var(--text-secondary);
+    }
+
+    .nav-links-mobile a:hover,
+    .nav-links-mobile a:focus-visible {
+      color: var(--text-primary);
+    }
+
+    .mobile-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .mobile-actions .btn {
+      width: 100%;
     }
   }
 
@@ -123,3 +278,51 @@
     }
   }
 </style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#mobile-menu");
+  const header = document.querySelector<HTMLElement>(".site-header");
+
+  if (toggle && menu && header) {
+    const closeMenu = () => {
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Abrir menú");
+      menu.hidden = true;
+    };
+
+    const openMenu = () => {
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Cerrar menú");
+      menu.hidden = false;
+    };
+
+    toggle.addEventListener("click", () => {
+      if (menu.hidden) openMenu();
+      else closeMenu();
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menu.hidden && !header.contains(e.target as Node)) closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.hidden) {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+
+    // Close the mobile panel if the viewport grows past the mobile
+    // breakpoint (e.g. rotating a tablet), so it doesn't linger open
+    // behind the desktop nav.
+    const mq = window.matchMedia("(min-width: 901px)");
+    mq.addEventListener("change", (e) => {
+      if (e.matches) closeMenu();
+    });
+  }
+</script>
