@@ -1,0 +1,325 @@
+---
+---
+
+<section class="webshow" id="muestra">
+  <div class="container webshow-layout">
+    <div class="webshow-copy">
+      <span class="eyebrow">Ejemplo en vivo</span>
+      <h2 style="margin-top:12px;">Así se ve una web moderna</h2>
+      <p>
+        Un ejemplo del tipo de sitio que construyo: limpio, rápido y pensado para que tus
+        clientes encuentren lo que buscan y te contacten sin dar vueltas.
+      </p>
+      <a href="#contacto" class="btn btn-primary">Quiero una web así</a>
+    </div>
+
+    <div class="browser" aria-hidden="true">
+      <div class="browser-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <div class="browser-url">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"
+            ><rect x="4" y="11" width="16" height="9" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"
+            ></path></svg
+          >
+          verdecafe.cl
+        </div>
+      </div>
+      <div class="site">
+        <header class="site-nav wel wanim" style="animation-delay:.2s">
+          <span class="site-brand">Verde<span>Café</span></span>
+          <nav class="site-links">
+            <span>Menú</span><span>Nosotros</span><span class="site-nav-cta">Contacto</span>
+          </nav>
+        </header>
+        <div class="site-hero">
+          <div class="site-hero-text">
+            <h3 class="wel wanim" style="animation-delay:.5s">Café de especialidad en tu barrio</h3>
+            <p class="wel wanim" style="animation-delay:.75s">
+              Grano fresco, tostado local y la mejor atención de la cuadra.
+            </p>
+            <span class="site-btn wel wanim" style="animation-delay:1s">Ver el menú →</span>
+          </div>
+          <div class="site-hero-img wel wanim" style="animation-delay:.85s">☕</div>
+        </div>
+        <div class="site-cards">
+          <div class="site-card wel wanim" style="animation-delay:1.3s"><span>🥐</span>Desayunos</div>
+          <div class="site-card wel wanim" style="animation-delay:1.5s"><span>🥪</span>Almuerzos</div>
+          <div class="site-card wel wanim" style="animation-delay:1.7s"><span>🛍️</span>Para llevar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .webshow {
+    background: var(--bg-base);
+  }
+
+  .webshow-layout {
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .webshow-copy h2 {
+    font-size: clamp(1.65rem, 2.6vw + 1rem, 2.35rem);
+    font-weight: 900;
+    margin-bottom: var(--space-4);
+  }
+
+  .webshow-copy p {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    font-size: 1.03125rem;
+    max-width: 480px;
+    margin-bottom: var(--space-5);
+  }
+
+  /* ---------- Browser frame ---------- */
+  .browser {
+    width: 460px;
+    max-width: 100%;
+    margin-inline: auto;
+    background: #0c0c14;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(var(--cyan-rgb), 0.25),
+      0 30px 70px -30px rgba(var(--magenta-rgb), 0.5),
+      0 0 60px -10px rgba(var(--cyan-rgb), 0.25);
+  }
+
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #15151f;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-r {
+    background: #ff5f57;
+  }
+  .dot-y {
+    background: #febc2e;
+  }
+  .dot-g {
+    background: #28c840;
+  }
+
+  .browser-url {
+    flex: 1;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #0c0c14;
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+  }
+
+  /* ---------- Fictional light-themed mini site ---------- */
+  .site {
+    background: #faf7f2;
+    color: #2a2622;
+    min-height: 360px;
+    padding: 16px 18px 22px;
+    transition: opacity 0.35s ease;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .site-brand {
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1f6d4a;
+  }
+  .site-brand span {
+    color: #2a2622;
+  }
+
+  .site-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: #6b645c;
+  }
+
+  .site-nav-cta {
+    background: #1f9d55;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  .site-hero {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 0 20px;
+  }
+
+  .site-hero-text {
+    flex: 1;
+  }
+
+  .site-hero-text h3 {
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: #221f1b;
+    margin: 0 0 8px;
+  }
+
+  .site-hero-text p {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: #6b645c;
+    margin: 0 0 14px;
+    line-height: 1.4;
+  }
+
+  .site-btn {
+    display: inline-block;
+    background: #1f9d55;
+    color: #fff;
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px -6px rgba(31, 157, 85, 0.7);
+  }
+
+  .site-hero-img {
+    width: 92px;
+    height: 92px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: radial-gradient(circle at 35% 30%, #d8f0e2, #a7dcc0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .site-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .site-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: #3a352f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px -8px rgba(0, 0, 0, 0.4);
+  }
+
+  .site-card span {
+    font-size: 1.5rem;
+  }
+
+  /* ---------- Build-in animation ---------- */
+  .wel {
+    opacity: 0;
+  }
+
+  .wanim {
+    animation: webIn 0.55s ease forwards;
+  }
+
+  @keyframes webIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 960px) {
+    .webshow-layout {
+      grid-template-columns: 1fr;
+    }
+    .browser {
+      width: 100%;
+      max-width: 420px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wel {
+      opacity: 1 !important;
+    }
+    .wanim {
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    const site = document.querySelector<HTMLElement>("#muestra .site");
+    const animEls = site ? Array.from(site.querySelectorAll<HTMLElement>(".wanim")) : [];
+
+    const restart = () => {
+      if (!site || !animEls.length) return;
+
+      // Fade the whole mockup out, then replay the staggered build-in.
+      site.style.opacity = "0";
+
+      window.setTimeout(() => {
+        animEls.forEach((el) => el.classList.remove("wanim"));
+        // Force a reflow so removing the class registers before re-adding.
+        void site.offsetWidth;
+        animEls.forEach((el) => el.classList.add("wanim"));
+        site.style.opacity = "1";
+      }, 350);
+    };
+
+    window.setInterval(restart, 9000);
+  }
+</script>
