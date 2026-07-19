@@ -14,6 +14,37 @@
     <div class="cat-grid">
       <div class="cat-card reveal corner-brackets">
         <span class="cat-tag">// 01</span>
+        <h3>Diseño y Desarrollo de Páginas Web</h3>
+        <p>
+          Diseño y desarrollo tu página web para que se vea profesional y cargue rápido, lista
+          para darle presencia online a tu negocio.
+        </p>
+        <ul class="cat-items">
+          <li>
+            <h4>Landing Pages</h4>
+            <p>
+              Una sola página, directa y bien diseñada, para presentar tu negocio y captar
+              contactos.
+            </p>
+          </li>
+          <li>
+            <h4>Sitios Corporativos</h4>
+            <p>
+              Varias secciones —servicios, nosotros, contacto— para empresas que necesitan más
+              presencia online.
+            </p>
+          </li>
+          <li>
+            <h4>Rápidas y en Cualquier Pantalla</h4>
+            <p>
+              Optimizadas para cargar rápido y verse bien en el celular, que es desde donde te
+              va a llegar la mayoría de la gente.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="cat-card reveal corner-brackets">
+        <span class="cat-tag">// 02</span>
         <h3>Desarrollo de Software a Medida</h3>
         <p>
           Construyo aplicaciones y microservicios con Node.js, NestJS, Java y Angular, pensados
@@ -34,47 +65,18 @@
               empresa.
             </p>
           </li>
-        </ul>
-      </div>
-      <div class="cat-card reveal corner-brackets">
-        <span class="cat-tag">// 02</span>
-        <h3>Presencia y Ventas Digitales para tu Negocio</h3>
-        <ul class="cat-items">
           <li>
-            <h4>Diseño de Páginas Web</h4>
+            <h4>Integración con IA</h4>
             <p>
-              Diseño y desarrollo tu página web para que se vea profesional y cargue rápido, ya
-              sea una landing page de una sola sección o un sitio completo, listo para publicar.
+              Sumo modelos de IA a tus procesos y conecto sistemas, incluida integración con
+              banca y organismos públicos, para automatizar tareas internas y reducir errores.
             </p>
           </li>
           <li>
-            <h4>Chatbots de WhatsApp para Pedidos</h4>
+            <h4>Modernización de Sistemas Legacy</h4>
             <p>
-              Implemento chatbots de WhatsApp que reciben pedidos, responden consultas y
-              confirman compras automáticamente, para que vendas 24/7 sin perder
-              mensajes. <a class="inline-link" href="#chatbot">Ver cómo funciona →</a>
-            </p>
-          </li>
-        </ul>
-      </div>
-      <div class="cat-card reveal corner-brackets">
-        <span class="cat-tag">// 03</span>
-        <h3>IA, Automatización y Modernización</h3>
-        <ul class="cat-items">
-          <li>
-            <h4>Automatización e Integración con IA</h4>
-            <p>
-              Integro modelos de IA en tus flujos de trabajo y conecto sistemas, incluida
-              integración con banca y organismos públicos, para automatizar tareas y reducir
-              errores manuales.
-            </p>
-          </li>
-          <li>
-            <h4>Modernización de Sistemas Legacy y Consultoría</h4>
-            <p>
-              Migro aplicaciones Java y Angular hacia arquitecturas modernas en la nube (AWS,
-              Docker) y te ayudo a validar ideas rápido con arquitectura, elección de stack y
-              prototipos funcionales apoyados en IA.
+              Migro aplicaciones Java y Angular a arquitecturas modernas en la nube (AWS,
+              Docker), sin frenar la operación mientras tanto.
             </p>
           </li>
         </ul>
@@ -92,9 +94,10 @@
 
   .cat-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-flow: dense;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    max-width: 940px;
+    margin-inline: auto;
   }
 
   .cat-card {
@@ -109,11 +112,6 @@
       transform 0.2s ease,
       border-color 0.2s ease,
       box-shadow 0.25s ease;
-    grid-column: span 2;
-  }
-
-  .cat-card:nth-child(1) {
-    grid-row: span 2;
   }
 
   .cat-card:hover {
@@ -186,15 +184,9 @@
     text-shadow: 0 0 8px rgba(var(--magenta-rgb), 0.5);
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 760px) {
     .cat-grid {
       grid-template-columns: 1fr;
-    }
-    .cat-card {
-      grid-column: span 1 !important;
-    }
-    .cat-card:nth-child(1) {
-      grid-row: auto;
     }
   }
 </style>
