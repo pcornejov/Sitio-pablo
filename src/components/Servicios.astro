@@ -7,17 +7,17 @@
       <span class="eyebrow" style="justify-content:center;">Servicios</span>
       <h2>En qué te puedo ayudar</h2>
       <p>
-        Voy desde una página web simple hasta software que corre en bancos y organismos
+        Desde una página web o una tienda online hasta software que corre en bancos y organismos
         públicos.
       </p>
     </div>
     <div class="cat-grid">
       <div class="cat-card reveal corner-brackets">
         <span class="cat-tag">// 01</span>
-        <h3>Diseño y Desarrollo de Páginas Web</h3>
+        <h3>Páginas Web</h3>
         <p>
-          Diseño y desarrollo tu página web para que se vea profesional y cargue rápido, lista
-          para darle presencia online a tu negocio.
+          Diseño y desarrollo tu página web para que se vea profesional, cargue rápido y se vea
+          bien en el celular, lista para darle presencia online a tu negocio.
         </p>
         <ul class="cat-items">
           <li>
@@ -34,42 +34,59 @@
               presencia online.
             </p>
           </li>
+        </ul>
+      </div>
+      <div class="cat-card reveal corner-brackets">
+        <span class="cat-tag">// 02</span>
+        <h3>Tiendas Digitales</h3>
+        <p>
+          Tu tienda online con carrito de compra, para que vendas por internet 24/7 y recibas
+          pedidos sin estar pendiente del teléfono.
+        </p>
+        <ul class="cat-items">
           <li>
-            <h4>Rápidas y en Cualquier Pantalla</h4>
+            <h4>Carrito y Pagos Online</h4>
             <p>
-              Optimizadas para cargar rápido y verse bien en el celular, que es desde donde te
-              va a llegar la mayoría de la gente.
+              Carrito de compra integrado con medios de pago, para que tus clientes compren
+              solos, a cualquier hora.
+            </p>
+          </li>
+          <li>
+            <h4>Catálogo de Productos</h4>
+            <p>
+              Tus productos ordenados por categoría, con fotos, stock y precios que actualizas tú
+              mismo.
+            </p>
+          </li>
+          <li>
+            <h4>Panel de Pedidos</h4>
+            <p>
+              Un panel simple para ver tus ventas, gestionar pedidos y controlar el stock desde
+              el celular o el computador.
             </p>
           </li>
         </ul>
       </div>
       <div class="cat-card reveal corner-brackets">
-        <span class="cat-tag">// 02</span>
-        <h3>Desarrollo de Software a Medida</h3>
+        <span class="cat-tag">// 03</span>
+        <h3>Software a Medida</h3>
         <p>
-          Construyo aplicaciones y microservicios con Node.js, NestJS, Java y Angular, pensados
-          para cómo funciona tu empresa en la práctica.
+          Construyo aplicaciones y sistemas a medida con Node.js, Java y Angular, pensados para
+          cómo funciona tu empresa en la práctica.
         </p>
         <ul class="cat-items">
           <li>
             <h4>Backend y APIs a Medida</h4>
             <p>
-              Diseño el backend, la base de datos y las APIs de tu producto, pensados para
-              crecer sin tener que reescribir todo en un año.
-            </p>
-          </li>
-          <li>
-            <h4>Frontend con Angular</h4>
-            <p>
-              Interfaces rápidas y mantenibles para las aplicaciones internas o externas de tu
-              empresa.
+              Diseño el backend, la base de datos y las APIs de tu producto, pensados para crecer
+              sin tener que reescribir todo en un año.
             </p>
           </li>
           <li>
             <h4>Integración con IA</h4>
             <p>
               Sumo modelos de IA a tus procesos y conecto sistemas, incluida integración con
-              banca y organismos públicos, para automatizar tareas internas y reducir errores.
+              banca y organismos públicos, para automatizar tareas y reducir errores.
             </p>
           </li>
           <li>
@@ -94,10 +111,8 @@
 
   .cat-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    max-width: 940px;
-    margin-inline: auto;
   }
 
   .cat-card {
@@ -184,9 +199,11 @@
     text-shadow: 0 0 8px rgba(var(--magenta-rgb), 0.5);
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 960px) {
     .cat-grid {
       grid-template-columns: 1fr;
+      max-width: 520px;
+      margin-inline: auto;
     }
   }
 </style>

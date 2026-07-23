@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Pablo Cornejo · Diseño Web y Software a Medida con IA",
-  description = "Diseño páginas web y desarrollo de software a medida con IA para empresas y negocios locales. +15 años de experiencia en banca, gobierno y fintech.",
+  title = "Pablo Cornejo · Páginas Web, Tiendas Online y Software a Medida",
+  description = "Diseño páginas web, tiendas online con carrito de compra y software a medida con IA. +15 años de experiencia en banca, gobierno y fintech.",
 } = Astro.props;
 
 const siteUrl = "https://www.pablocornejo.cl/";
@@ -33,6 +33,14 @@ const personJsonLd = {
       itemOffered: {
         "@type": "Service",
         name: "Diseño y desarrollo de páginas web",
+        areaServed: "CL",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Desarrollo de tiendas online con carrito de compra",
         areaServed: "CL",
       },
     },
