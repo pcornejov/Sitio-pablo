@@ -5,20 +5,14 @@ const waMessage = encodeURIComponent(
 ---
 
 <section class="hero" id="inicio">
-  <div class="hero-grid-floor" aria-hidden="true"></div>
-  <div class="hero-horizon-glow" aria-hidden="true"></div>
   <div class="container hero-inner">
-    <span class="eyebrow"
-      >Páginas web, tiendas online y software a medida con IA · Para empresas y negocios
-      locales</span
-    >
+    <span class="eyebrow">Desarrollo web y software · Chile</span>
     <h1>
-      Tu proyecto digital, <span class="accent">mucho más rápido</span> gracias a la IA
+      Llevo tu negocio a internet, <span class="accent">bien hecho</span>.
     </h1>
     <p class="hero-sub">
-      Diseño y desarrollo tu página web, tu tienda online o tu software a medida usando IA en
-      cada etapa para avanzar más rápido, sin bajar los estándares que aprendí trabajando en
-      banca y gobierno.
+      Páginas web, tiendas online y software a medida. La experiencia de +15 años en banca,
+      gobierno y fintech, con el trato cercano de trabajar directo con una sola persona.
     </p>
     <div class="hero-ctas">
       <a href="#contacto" class="btn btn-primary">Cotizar proyecto</a>
@@ -29,123 +23,59 @@ const waMessage = encodeURIComponent(
         class="btn btn-secondary"
         data-cta="hero-whatsapp"
       >
-        Escribir por WhatsApp
+        Escríbeme por WhatsApp
         <span class="visually-hidden">(se abre en una nueva pestaña)</span>
       </a>
     </div>
-    <p class="trust-line"><strong>+15 años de experiencia</strong> · Banca, gobierno y fintech</p>
+    <p class="trust-line">+15 años de experiencia · Banca · Gobierno · Fintech</p>
   </div>
 </section>
 
 <style>
   .hero {
-    position: relative;
-    overflow: hidden;
-    padding: var(--space-9) 0 var(--space-8);
     background: var(--bg-base);
-  }
-
-  .hero-grid-floor {
-    position: absolute;
-    left: -20%;
-    right: -20%;
-    bottom: -10%;
-    height: 65%;
-    background-image:
-      linear-gradient(rgba(var(--magenta-rgb), 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(var(--cyan-rgb), 0.4) 1px, transparent 1px);
-    background-size: 44px 44px;
-    transform: perspective(480px) rotateX(62deg);
-    transform-origin: bottom center;
-    -webkit-mask-image: linear-gradient(to top, black 10%, transparent 82%);
-    mask-image: linear-gradient(to top, black 10%, transparent 82%);
-    pointer-events: none;
-  }
-
-  .hero-horizon-glow {
-    position: absolute;
-    left: 50%;
-    bottom: 32%;
-    width: 120%;
-    height: 280px;
-    transform: translateX(-50%);
-    background: radial-gradient(closest-side, rgba(var(--magenta-rgb), 0.28), transparent 70%);
-    pointer-events: none;
-    filter: blur(8px);
-    animation: heroGlowBreathe 7s ease-in-out infinite;
-  }
-
-  @keyframes heroGlowBreathe {
-    0%,
-    100% {
-      opacity: 0.85;
-      transform: translateX(-50%) scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: translateX(-50%) scale(1.06);
-    }
-  }
-
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(600px 420px at 15% 0%, rgba(var(--cyan-rgb), 0.13), transparent 60%),
-      radial-gradient(600px 420px at 90% 15%, rgba(var(--magenta-rgb), 0.13), transparent 60%);
-    pointer-events: none;
+    padding: var(--space-9) 0 var(--space-8);
   }
 
   .hero-inner {
-    position: relative;
-    max-width: 780px;
-    margin-inline: auto;
-    text-align: center;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-5);
   }
 
   .hero h1 {
-    font-size: clamp(2.1rem, 3.6vw + 1rem, 3.35rem);
-    font-weight: 900;
-    line-height: 1.12;
+    font-size: clamp(2.5rem, 4.5vw + 1rem, 4.5rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: pretty;
   }
 
   .hero .accent {
-    color: var(--magenta);
-    text-shadow:
-      0 0 18px rgba(var(--magenta-rgb), 0.55),
-      0 0 42px rgba(var(--magenta-rgb), 0.25);
+    color: var(--accent);
   }
 
   .hero-sub {
     font-family: var(--font-body);
-    font-size: 1.0625rem;
+    font-size: 1.25rem;
+    line-height: 1.6;
     color: var(--text-secondary);
     max-width: 620px;
   }
 
   .hero-ctas {
     display: flex;
-    gap: var(--space-4);
+    gap: var(--space-3);
     flex-wrap: wrap;
-    justify-content: center;
+    margin-top: var(--space-2);
   }
 
   .trust-line {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
     color: var(--text-tertiary);
     margin-top: var(--space-2);
-    letter-spacing: 0.02em;
-  }
-
-  .trust-line strong {
-    color: var(--green);
-    font-weight: 400;
-    text-shadow: 0 0 8px rgba(var(--green-rgb), 0.5);
   }
 </style>

@@ -76,7 +76,7 @@ const waMessage = encodeURIComponent(
     position: sticky;
     top: 0;
     z-index: 80;
-    background: rgba(10, 10, 15, 0.86);
+    background: rgba(253, 244, 232, 0.85);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-subtle);
   }
@@ -102,15 +102,15 @@ const waMessage = encodeURIComponent(
   }
 
   .brand-badge {
-    font-family: var(--font-mono);
-    font-weight: 400;
+    font-family: var(--font-body);
+    font-weight: 700;
     font-size: 0.625rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--bg-base);
-    background: var(--cyan);
-    padding: 3px 9px;
-    border-radius: 2px;
+    letter-spacing: 0.08em;
+    color: var(--accent-on);
+    background: var(--accent);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
   }
 
   .nav-links {
@@ -119,27 +119,20 @@ const waMessage = encodeURIComponent(
     list-style: none;
     margin: 0;
     padding: 0;
-    font-family: var(--font-sub);
+    font-family: var(--font-body);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
 
   .nav-links a {
     text-decoration: none;
     color: var(--text-secondary);
-    border-bottom: 2px solid transparent;
-    padding-bottom: 4px;
-    transition:
-      color 0.15s,
-      border-color 0.15s,
-      text-shadow 0.15s;
+    transition: color 0.15s;
   }
 
   .nav-links a:hover,
   .nav-links a:focus-visible {
-    color: var(--text-primary);
-    border-color: var(--cyan);
-    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
+    color: var(--accent-strong);
   }
 
   .header-actions {

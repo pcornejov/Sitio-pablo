@@ -63,7 +63,7 @@ const personJsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="theme-color" content="#fdf4e8" />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`${base}/apple-touch-icon.png`} />
     <title>{title}</title>
@@ -86,15 +86,12 @@ const personJsonLd = {
       set:html={JSON.stringify(personJsonLd)}
     />
 
-    <style is:global set:html={`
-      @font-face{font-family:'Orbitron';font-style:normal;font-weight:700;font-display:swap;src:url('${base}/fonts/orbitron-700.woff2') format('woff2');}
-      @font-face{font-family:'Orbitron';font-style:normal;font-weight:900;font-display:swap;src:url('${base}/fonts/orbitron-900.woff2') format('woff2');}
-      @font-face{font-family:'Rajdhani';font-style:normal;font-weight:600;font-display:swap;src:url('${base}/fonts/rajdhani-600.woff2') format('woff2');}
-      @font-face{font-family:'Rajdhani';font-style:normal;font-weight:700;font-display:swap;src:url('${base}/fonts/rajdhani-700.woff2') format('woff2');}
-      @font-face{font-family:'Share Tech Mono';font-style:normal;font-weight:400;font-display:swap;src:url('${base}/fonts/share-tech-mono-400.woff2') format('woff2');}
-      @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('${base}/fonts/inter-400.woff2') format('woff2');}
-      @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('${base}/fonts/inter-600.woff2') format('woff2');}
-    `} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+    />
     <script is:inline>
       (function () {
         var reduced =
