@@ -97,21 +97,21 @@ const waMessage = encodeURIComponent(
 <style>
   .contact {
     background: var(--bg-surface);
-    border-top: 1px solid var(--border-subtle);
   }
 
   .contact-card {
-    --bracket-size: 24px;
     max-width: 780px;
     margin-inline: auto;
     text-align: center;
     background: var(--bg-elevated);
-    border: 1px solid var(--border-strong);
-    padding: var(--space-7);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8) var(--space-7);
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
     align-items: center;
+    box-shadow: 0 24px 54px -34px rgba(90, 60, 30, 0.55);
   }
 
   .contact-card p {
@@ -186,30 +186,17 @@ const waMessage = encodeURIComponent(
   }
 
   .icon-email .icon-circle {
-    color: var(--cyan);
+    color: var(--accent-strong);
   }
-  .icon-email:hover .icon-circle,
-  .icon-email:focus-visible .icon-circle {
-    border-color: var(--cyan);
-    box-shadow: 0 0 20px 2px rgba(var(--cyan-rgb), 0.4);
-  }
-
   .icon-whatsapp .icon-circle {
-    color: var(--green);
+    color: #1f9d55;
   }
-  .icon-whatsapp:hover .icon-circle,
-  .icon-whatsapp:focus-visible .icon-circle {
-    border-color: var(--green);
-    box-shadow: 0 0 20px 2px rgba(var(--green-rgb), 0.4);
-  }
-
   .icon-linkedin .icon-circle {
-    color: var(--magenta);
+    color: #0a66c2;
   }
-  .icon-linkedin:hover .icon-circle,
-  .icon-linkedin:focus-visible .icon-circle {
-    border-color: var(--magenta);
-    box-shadow: 0 0 20px 2px rgba(var(--magenta-rgb), 0.4);
+  .icon-btn:hover .icon-circle,
+  .icon-btn:focus-visible .icon-circle {
+    border-color: currentColor;
   }
 
   .contact-form-toggle {
@@ -220,14 +207,13 @@ const waMessage = encodeURIComponent(
 
   .contact-form-toggle summary {
     cursor: pointer;
-    font-family: var(--font-sub);
-    font-weight: 600;
+    font-family: var(--font-body);
+    font-weight: 700;
     font-size: 0.9375rem;
-    letter-spacing: 0.01em;
-    color: var(--cyan);
+    color: var(--accent-strong);
     text-align: center;
     list-style: none;
-    border-bottom: 1px dashed rgba(var(--cyan-rgb), 0.5);
+    border-bottom: 2px solid var(--border-strong);
     padding-bottom: 2px;
   }
 
@@ -237,7 +223,7 @@ const waMessage = encodeURIComponent(
 
   .contact-form-toggle summary:hover,
   .contact-form-toggle summary:focus-visible {
-    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.5);
+    border-color: var(--accent);
   }
 
   .contact-form {
@@ -262,7 +248,7 @@ const waMessage = encodeURIComponent(
     font-family: var(--font-body);
     font-size: 0.9375rem;
     color: var(--text-primary);
-    background: var(--bg-elevated-2);
+    background: var(--bg-base);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-sm);
     padding: var(--space-3);
@@ -271,13 +257,13 @@ const waMessage = encodeURIComponent(
 
   .contact-form input:focus-visible,
   .contact-form textarea:focus-visible {
-    outline: 2px solid var(--cyan);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 
   .contact-form-hint {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
     color: var(--text-tertiary);
     max-width: none;
     text-align: center;

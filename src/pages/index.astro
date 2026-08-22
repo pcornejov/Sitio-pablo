@@ -49,15 +49,12 @@ const waMessage = encodeURIComponent("Hola Pablo, vi tu sitio y tengo una consul
     width: 58px;
     height: 58px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #3dffb0, #17c98a);
-    color: #06110c;
+    background: #25d366;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow:
-      0 0 0 1px rgba(var(--cyan-rgb), 0.4),
-      0 10px 26px -6px rgba(0, 0, 0, 0.6),
-      0 0 24px 2px rgba(var(--green-rgb), 0.35);
+    box-shadow: 0 12px 26px -8px rgba(37, 211, 102, 0.7);
     text-decoration: none;
     transition:
       transform 0.15s ease,
@@ -83,7 +80,7 @@ const waMessage = encodeURIComponent("Hola Pablo, vi tu sitio y tengo una consul
     position: absolute;
     inset: -8px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--green-rgb), 0.45), transparent 72%);
+    background: radial-gradient(circle, rgba(37, 211, 102, 0.4), transparent 72%);
     animation: waPulse 2.8s ease-out infinite;
     pointer-events: none;
     z-index: -1;
@@ -106,10 +103,7 @@ const waMessage = encodeURIComponent("Hola Pablo, vi tu sitio y tengo una consul
   .wa-float:hover,
   .wa-float:focus-visible {
     transform: scale(1.08);
-    box-shadow:
-      0 0 0 1px var(--cyan),
-      0 10px 26px -6px rgba(0, 0, 0, 0.6),
-      0 0 34px 6px rgba(var(--green-rgb), 0.5);
+    box-shadow: 0 16px 32px -8px rgba(37, 211, 102, 0.8);
   }
 
   /* Above the mobile breakpoint the header's own WhatsApp CTA is always

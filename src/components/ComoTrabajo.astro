@@ -38,19 +38,20 @@
 
 <style>
   .process {
-    background: var(--bg-base);
+    background: var(--bg-surface);
   }
 
   .process-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .step-card {
-    --bracket-size: 16px;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 14px 34px -30px rgba(90, 60, 30, 0.5);
     padding: var(--space-5);
     display: flex;
     flex-direction: column;
@@ -59,14 +60,13 @@
 
   .step-num {
     font-family: var(--font-display);
-    font-weight: 900;
+    font-weight: 800;
     font-size: 1.75rem;
-    color: var(--magenta);
-    text-shadow: 0 0 12px rgba(var(--magenta-rgb), 0.4);
+    color: var(--accent);
   }
 
   .step-card h3 {
-    font-family: var(--font-sub);
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.125rem;
     color: var(--text-primary);
