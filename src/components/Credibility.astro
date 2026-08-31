@@ -3,24 +3,24 @@
 
 <section class="credibility" id="por-que">
   <div class="container">
-    <div class="cred-head">
-      <span class="eyebrow">Por qué trabajar conmigo</span>
+    <div class="section-head">
+      <span class="eyebrow" style="justify-content:center;">Por qué trabajar conmigo</span>
       <h2>La misma seriedad, ahora para tu negocio</h2>
     </div>
     <div class="stats-grid">
-      <div class="stat-card reveal">
-        <div class="stat-num">+15 años</div>
-        <p>construyendo software que la gente realmente usa todos los días.</p>
+      <div class="stat-card reveal corner-brackets">
+        <div class="stat-num">+15 AÑOS</div>
+        <p>de experiencia construyendo software que la gente realmente usa todos los días.</p>
       </div>
-      <div class="stat-card reveal">
-        <div class="stat-num">Banca · Gobierno · Fintech</div>
+      <div class="stat-card reveal corner-brackets">
+        <div class="stat-num">BANCA · GOBIERNO · FINTECH</div>
         <p>Trabajo real para bancos, organismos públicos y empresas fintech, no solo referencias en el papel.</p>
       </div>
-      <div class="stat-card reveal">
-        <div class="stat-num">Tecnología probada</div>
+      <div class="stat-card reveal corner-brackets">
+        <div class="stat-num">TECNOLOGÍA PROBADA, NO EXPERIMENTOS</div>
         <p>
-          El mismo stack que uso en sistemas bancarios y de gobierno (Node.js, Java, Python, AWS),
-          aplicado a que tu web o tu software no se caiga ni se vuelva lento.
+          El mismo stack que uso en sistemas bancarios y de gobierno (Node.js, Java, Python, AWS)
+          aplicado ahora a que tu web o tu software no se caiga ni se vuelva lento.
         </p>
       </div>
     </div>
@@ -33,75 +33,67 @@
 
 <style>
   .credibility {
-    background: var(--bg-dark);
-    color: var(--text-on-dark);
-  }
-
-  .cred-head {
-    max-width: 720px;
-    margin-bottom: var(--space-7);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
-  }
-
-  .cred-head h2 {
-    font-size: clamp(1.75rem, 2.6vw + 1rem, 2.4rem);
-    font-weight: 800;
-    color: var(--accent-on);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
   }
 
   .stat-card {
-    border-top: 2px solid var(--accent);
-    padding-top: var(--space-4);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+    --bracket-size: 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-6);
+    text-align: left;
+    grid-column: span 2;
+  }
+
+  .stat-card:nth-child(3) {
+    grid-column: span 4;
   }
 
   .stat-num {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 900;
     font-size: 1.5rem;
-    line-height: 1.1;
-    color: #f6a46b;
+    color: var(--green);
+    text-shadow: 0 0 14px rgba(var(--green-rgb), 0.45);
+    margin-bottom: var(--space-3);
   }
 
   .stat-card p {
     font-family: var(--font-body);
-    color: var(--text-on-dark-muted);
+    color: var(--text-secondary);
     font-size: 0.9375rem;
-    line-height: 1.55;
   }
 
   .bridge-line {
-    margin-top: var(--space-7);
+    margin-top: var(--space-6);
     text-align: center;
-    font-family: var(--font-body);
+    font-family: var(--font-sub);
     font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--text-on-dark);
+    font-weight: 600;
+    color: var(--text-primary);
     max-width: 820px;
     margin-inline: auto;
-    line-height: 1.55;
   }
 
   .bridge-line span {
-    color: #f6a46b;
-    font-weight: 700;
+    color: var(--cyan);
+    text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.4);
   }
 
-  @media (max-width: 780px) {
+  @media (max-width: 960px) {
     .stats-grid {
       grid-template-columns: 1fr;
-      gap: var(--space-5);
+    }
+    .stat-card {
+      grid-column: span 1 !important;
     }
   }
 </style>

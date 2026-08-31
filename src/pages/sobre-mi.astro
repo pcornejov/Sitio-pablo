@@ -131,23 +131,27 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 900;
     font-size: 2rem;
-    color: var(--accent-on);
-    background: var(--accent);
-    box-shadow: 0 18px 36px -18px rgba(var(--accent-rgb), 0.7);
+    color: var(--bg-base);
+    background: radial-gradient(circle at 35% 30%, var(--cyan), var(--magenta));
+    box-shadow:
+      0 0 0 1px rgba(var(--cyan-rgb), 0.4),
+      0 0 40px -8px rgba(var(--magenta-rgb), 0.6);
     margin-bottom: var(--space-2);
   }
 
   .about h1 {
     font-size: clamp(2rem, 3.2vw + 1rem, 2.9rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-weight: 900;
+    line-height: 1.15;
   }
 
   .about h1 .accent {
-    color: var(--accent);
+    color: var(--magenta);
+    text-shadow:
+      0 0 18px rgba(var(--magenta-rgb), 0.55),
+      0 0 42px rgba(var(--magenta-rgb), 0.25);
   }
 
   .about-sub {
@@ -166,9 +170,8 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
   .about-story h2,
   .about-stack h2 {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 900;
     font-size: clamp(1.4rem, 2vw + 1rem, 1.85rem);
-    letter-spacing: -0.02em;
     margin-bottom: var(--space-2);
   }
 
@@ -186,10 +189,9 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
   }
 
   .value-card {
+    --bracket-size: 16px;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 14px 34px -30px rgba(90, 60, 30, 0.5);
     padding: var(--space-5);
     display: flex;
     flex-direction: column;
@@ -197,10 +199,10 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
   }
 
   .value-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-sub);
     font-weight: 700;
     font-size: 1.125rem;
-    color: var(--accent-strong);
+    color: var(--cyan);
   }
 
   .value-card p {
@@ -216,13 +218,14 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
   }
 
   .stack-chip {
-    font-family: var(--font-body);
+    font-family: var(--font-mono);
     font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--accent-strong);
-    background: var(--accent-soft);
+    letter-spacing: 0.03em;
+    color: var(--green);
+    border: 1px solid rgba(var(--green-rgb), 0.35);
+    background: rgba(var(--green-rgb), 0.06);
     padding: 7px 14px;
-    border-radius: var(--radius-pill);
+    border-radius: 2px;
   }
 
   .about-ctas {
