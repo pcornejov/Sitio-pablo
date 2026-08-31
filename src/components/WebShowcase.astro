@@ -189,7 +189,7 @@ const services = [
 
 <style>
   .webshow {
-    background: var(--bg-surface);
+    background: var(--bg-base);
     overflow: hidden;
   }
 
@@ -201,16 +201,15 @@ const services = [
   }
 
   .webshow-copy h2 {
-    font-size: clamp(1.75rem, 2.6vw + 1rem, 2.4rem);
-    font-weight: 800;
+    font-size: clamp(1.65rem, 2.6vw + 1rem, 2.35rem);
+    font-weight: 900;
     margin-bottom: var(--space-4);
   }
 
   .webshow-copy p {
     font-family: var(--font-body);
     color: var(--text-secondary);
-    font-size: 1.0625rem;
-    line-height: 1.6;
+    font-size: 1.03125rem;
     max-width: 480px;
     margin-bottom: var(--space-5);
   }
@@ -223,13 +222,14 @@ const services = [
   }
 
   .chip {
-    font-family: var(--font-body);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--accent-strong);
-    background: var(--accent-soft);
-    padding: 7px 14px;
-    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    border: 1px solid rgba(var(--cyan-rgb), 0.4);
+    padding: 6px 12px;
+    border-radius: 2px;
   }
 
   /* ---------- Devices ---------- */
@@ -252,7 +252,10 @@ const services = [
     border-bottom: none;
     border-radius: 14px 14px 0 0;
     overflow: hidden;
-    box-shadow: 0 44px 80px -40px rgba(90, 60, 30, 0.6);
+    box-shadow:
+      0 0 0 1px rgba(var(--cyan-rgb), 0.25),
+      0 40px 80px -35px rgba(var(--magenta-rgb), 0.5),
+      0 0 60px -10px rgba(var(--cyan-rgb), 0.2);
   }
 
   .lap-bar {
@@ -261,7 +264,7 @@ const services = [
     gap: 8px;
     padding: 8px 12px;
     background: #15151f;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .dot {
@@ -287,12 +290,12 @@ const services = [
     align-items: center;
     gap: 6px;
     background: #0c0c14;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-subtle);
     border-radius: 20px;
     padding: 3px 12px;
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    color: #8b90a0;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-tertiary);
   }
 
   .lap-view {
@@ -383,7 +386,9 @@ const services = [
     border-radius: 26px;
     overflow: hidden;
     z-index: 2;
-    box-shadow: 0 30px 60px -25px rgba(43, 33, 27, 0.55);
+    box-shadow:
+      0 0 0 1px rgba(var(--green-rgb), 0.3),
+      0 30px 60px -25px rgba(0, 0, 0, 0.85);
     animation: phoneFloat 6s ease-in-out infinite;
   }
 

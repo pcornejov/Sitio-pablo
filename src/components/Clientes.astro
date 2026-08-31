@@ -78,12 +78,11 @@ const clientes = [
   }
 
   .client-card {
+    --bracket-size: 16px;
     flex: 0 0 100%;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 18px 40px -30px rgba(90, 60, 30, 0.5);
-    padding: var(--space-7);
+    padding: var(--space-6);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,8 +91,7 @@ const clientes = [
   }
 
   .client-logo-badge {
-    background: #ffffff;
-    border: 1px solid var(--border-subtle);
+    background: #f5f5fa;
     border-radius: var(--radius-md);
     padding: var(--space-4);
     width: 160px;
@@ -151,8 +149,8 @@ const clientes = [
 
   .carousel-arrow:hover,
   .carousel-arrow:focus-visible {
-    border-color: var(--accent);
-    color: var(--accent-strong);
+    border-color: var(--cyan);
+    box-shadow: 0 0 16px 2px rgba(var(--cyan-rgb), 0.35);
   }
 
   .carousel-prev {
@@ -182,7 +180,8 @@ const clientes = [
   }
 
   .carousel-dot[aria-current="true"] {
-    background: var(--accent);
+    background: var(--magenta);
+    box-shadow: 0 0 8px 1px rgba(var(--magenta-rgb), 0.5);
   }
 
   @media (max-width: 640px) {

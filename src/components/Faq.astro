@@ -59,22 +59,23 @@ const faqJsonLd = {
 
 <style>
   .faq {
-    background: var(--bg-base);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .faq-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
+    gap: 1rem;
     max-width: 980px;
     margin-inline: auto;
   }
 
   .faq-item {
+    --bracket-size: 16px;
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    box-shadow: 0 14px 34px -30px rgba(90, 60, 30, 0.5);
     padding: var(--space-5);
     display: flex;
     flex-direction: column;
@@ -82,7 +83,7 @@ const faqJsonLd = {
   }
 
   .faq-item h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-sub);
     font-weight: 700;
     font-size: 1.125rem;
     color: var(--text-primary);
