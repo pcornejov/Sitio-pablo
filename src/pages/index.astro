@@ -10,136 +10,19 @@ import ComoTrabajo from "../components/ComoTrabajo.astro";
 import Faq from "../components/Faq.astro";
 import Contacto from "../components/Contacto.astro";
 import Footer from "../components/Footer.astro";
-import WhatsAppIcon from "../components/WhatsAppIcon.astro";
-
-const waMessage = encodeURIComponent("Hola Pablo, vi tu sitio y tengo una consulta 💬");
 ---
 
-<BaseLayout title="Pablo Cornejo · Páginas Web, Tiendas Online y Software a Medida">
+<BaseLayout>
   <Header />
   <main id="main-content">
     <Hero />
-    <Credibility />
+    <Servicios />
     <Clientes />
     <WebShowcase />
-    <Servicios />
+    <Credibility />
     <ComoTrabajo />
     <Faq />
     <Contacto />
   </main>
   <Footer />
-  <a
-    class="wa-float"
-    href={`https://wa.me/56957591164?text=${waMessage}`}
-    target="_blank"
-    rel="noopener"
-    aria-label="Escríbeme por WhatsApp"
-    data-cta="float-whatsapp"
-  >
-    <WhatsAppIcon size={30} />
-  </a>
 </BaseLayout>
-
-<style>
-  .wa-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 90;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #3dffb0, #17c98a);
-    color: #06110c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:
-      0 0 0 1px rgba(var(--cyan-rgb), 0.4),
-      0 10px 26px -6px rgba(0, 0, 0, 0.6),
-      0 0 24px 2px rgba(var(--green-rgb), 0.35);
-    text-decoration: none;
-    transition:
-      transform 0.15s ease,
-      box-shadow 0.2s ease,
-      opacity 0.2s ease;
-  }
-
-  .wa-float.is-scrolling {
-    opacity: 0.45;
-  }
-
-  @media (max-width: 480px) {
-    .wa-float {
-      width: 48px;
-      height: 48px;
-      bottom: 16px;
-      right: 16px;
-    }
-  }
-
-  .wa-float::before {
-    content: "";
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--green-rgb), 0.45), transparent 72%);
-    animation: waPulse 2.8s ease-out infinite;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  @keyframes waPulse {
-    0% {
-      transform: scale(0.85);
-      opacity: 0.6;
-    }
-    70% {
-      opacity: 0.08;
-    }
-    100% {
-      transform: scale(1.55);
-      opacity: 0;
-    }
-  }
-
-  .wa-float:hover,
-  .wa-float:focus-visible {
-    transform: scale(1.08);
-    box-shadow:
-      0 0 0 1px var(--cyan),
-      0 10px 26px -6px rgba(0, 0, 0, 0.6),
-      0 0 34px 6px rgba(var(--green-rgb), 0.5);
-  }
-
-  /* Above the mobile breakpoint the header's own WhatsApp CTA is always
-     visible, so the floating button would just be a third redundant
-     WhatsApp entry point next to it and the hero's. */
-  @media (min-width: 901px) {
-    .wa-float {
-      display: none;
-    }
-  }
-</style>
-
-<script>
-  const waFloat = document.querySelector<HTMLElement>(".wa-float");
-
-  if (waFloat) {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!prefersReducedMotion) {
-      let scrollTimer: ReturnType<typeof setTimeout> | null = null;
-
-      window.addEventListener(
-        "scroll",
-        () => {
-          waFloat.classList.add("is-scrolling");
-          if (scrollTimer) clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(() => waFloat.classList.remove("is-scrolling"), 400);
-        },
-        { passive: true },
-      );
-    }
-  }
-</script>

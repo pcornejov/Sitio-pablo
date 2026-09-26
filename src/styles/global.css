@@ -7,6 +7,15 @@
 html {
   scroll-behavior: smooth;
   overscroll-behavior-y: none;
+  /* Keep anchor targets and keyboard focus clear of the sticky header. */
+  scroll-padding-top: 92px;
+}
+
+@media (max-width: 900px) {
+  html {
+    /* ...and of the floating WhatsApp button on mobile. */
+    scroll-padding-bottom: 80px;
+  }
 }
 
 body {
@@ -18,6 +27,14 @@ body {
   -webkit-font-smoothing: antialiased;
   position: relative;
   overscroll-behavior-y: none;
+}
+
+@media (max-width: 900px) {
+  body {
+    /* Room at the end of the page so the floating WhatsApp button never
+       covers the last links. */
+    padding-bottom: 72px;
+  }
 }
 
 h1,
@@ -97,7 +114,7 @@ section {
   align-items: center;
   gap: var(--space-2);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -137,9 +154,11 @@ section {
   text-decoration: none;
 }
 
+/* Dark text on magenta: white only reaches 3.5:1, near-black gives 5.6:1
+   (WCAG AA) and still reads as neon. */
 .btn-primary {
   background: var(--magenta);
-  color: #fff;
+  color: var(--bg-base);
   box-shadow:
     0 0 0 1px rgba(var(--magenta-rgb), 0.5),
     0 4px 18px -6px rgba(var(--magenta-rgb), 0.6);
@@ -174,6 +193,14 @@ section {
   font-size: 0.9375rem;
 }
 
+@media (max-width: 480px) {
+  /* Let long labels wrap instead of overflowing narrow screens. */
+  .btn {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
 /* ---------- Corner brackets (shared card decoration) ---------- */
 .corner-brackets {
   position: relative;
@@ -205,6 +232,8 @@ section {
 /* ---------- Focus visible (keyboard navigation) ---------- */
 a:focus-visible,
 button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
 .btn:focus-visible {
   outline: 2px solid var(--cyan);
   outline-offset: 3px;
@@ -258,6 +287,15 @@ html.js-reveal .reveal {
 html.js-reveal .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- Paused animations (footer toggle) ---------- */
+/* Set on <html> by the "Pausar animaciones" button in the footer, and
+   restored from localStorage before first paint by BaseLayout. */
+html.motion-paused *,
+html.motion-paused *::before,
+html.motion-paused *::after {
+  animation-play-state: paused !important;
 }
 
 /* ---------- Reduced motion ---------- */

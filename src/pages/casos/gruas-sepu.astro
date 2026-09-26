@@ -2,15 +2,15 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import { waLink } from "../../lib/contact";
 
-const waMessage = encodeURIComponent(
-  "Hola Pablo, vi el caso de Grúas Sepu y quiero un sitio para mi negocio 👋",
-);
+const waHref = waLink("Hola Pablo, vi el caso de Grúas Sepu y quiero un sitio para mi negocio 👋");
 ---
 
 <BaseLayout
-  title="Caso: sitio web para Grúas Sepu · Pablo Cornejo"
-  description="Cómo diseñé y desarrollé el sitio web de Grúas Sepu, empresa de remolque y transporte de vehículos y maquinaria en la Región de Ñuble, para darle presencia profesional online."
+  title="Caso: página web para Grúas Sepu (Ñuble) · Pablo Cornejo"
+  description="Cómo diseñé y desarrollé la página web de Grúas Sepu, empresa de remolque de vehículos y maquinaria en la Región de Ñuble, pensada para el celular y WhatsApp."
+  breadcrumbs={[{ name: "Caso Grúas Sepu", path: "/casos/gruas-sepu/" }]}
 >
   <Header />
   <main id="main-content">
@@ -34,13 +34,13 @@ const waMessage = encodeURIComponent(
           <div class="case-card corner-brackets">
             <h2>Lo que construí</h2>
             <p>
-              Una landing page rápida y responsiva, pensada para que alguien que necesita una
-              grúa con urgencia encuentre en segundos el número de contacto y el detalle de los
-              servicios, sin depender de que Instagram o Facebook estén cargados en ese momento.
+              Una página rápida y cómoda en el celular, para que alguien que necesita una grúa
+              con urgencia encuentre en segundos el WhatsApp y los servicios, sin depender de que
+              Instagram o Facebook carguen en ese momento.
             </p>
           </div>
           <div class="case-card corner-brackets">
-            <h2>Stack</h2>
+            <h2>Pensado para la carretera</h2>
             <p>
               Sitio estático, optimizado para carga rápida en conexiones móviles (el escenario
               más común para alguien buscando una grúa desde la carretera) y con el número de
@@ -51,21 +51,22 @@ const waMessage = encodeURIComponent(
 
         <div class="case-ctas">
           <a
+            href={waHref}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+            data-cta="caso-whatsapp"
+          >
+            Quiero un sitio así
+            <span class="visually-hidden">por WhatsApp (se abre en una nueva pestaña)</span>
+          </a>
+          <a
             href="https://gruassepu.cl"
             target="_blank"
             rel="noopener"
             class="btn btn-secondary"
           >
             Visitar gruassepu.cl
-            <span class="visually-hidden">(se abre en una nueva pestaña)</span>
-          </a>
-          <a
-            href={`https://wa.me/56957591164?text=${waMessage}`}
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary"
-          >
-            Quiero un sitio así
             <span class="visually-hidden">(se abre en una nueva pestaña)</span>
           </a>
         </div>

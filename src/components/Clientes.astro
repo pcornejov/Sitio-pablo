@@ -8,8 +8,13 @@ const clientes = [
       "Sitio web para empresa de remolque y transporte de vehículos y maquinaria en la Región de Ñuble.",
     url: "https://gruassepu.cl",
     imagen: "gruas-sepu.jpg",
+    caso: "/casos/gruas-sepu/",
   },
 ];
+
+// Only announce a carousel to assistive tech once there is more than one
+// slide to move between.
+const isCarousel = clientes.length > 1;
 ---
 
 <section class="clients" id="clientes">
@@ -18,7 +23,12 @@ const clientes = [
       <span class="eyebrow" style="justify-content:center;">Caso real</span>
       <h2>Así se ve un proyecto terminado</h2>
     </div>
-    <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Clientes">
+    <div
+      class="carousel"
+      role={isCarousel ? "region" : undefined}
+      aria-roledescription={isCarousel ? "carrusel" : undefined}
+      aria-label={isCarousel ? "Clientes" : undefined}
+    >
       <div class="carousel-track">
         {
           clientes.map((c) => (
@@ -29,7 +39,7 @@ const clientes = [
               <h3>{c.nombre}</h3>
               <p>{c.descripcion}</p>
               <div class="client-card-links">
-                <a href="/casos/gruas-sepu" class="btn btn-primary btn-sm">Ver caso completo</a>
+                <a href={c.caso} class="btn btn-primary btn-sm">Ver caso completo</a>
                 <a href={c.url} class="btn btn-secondary btn-sm" target="_blank" rel="noopener">
                   Visitar sitio
                   <span class="visually-hidden">(se abre en una nueva pestaña)</span>
@@ -40,7 +50,7 @@ const clientes = [
         }
       </div>
       {
-        clientes.length > 1 && (
+        isCarousel && (
           <>
             <button class="carousel-arrow carousel-prev" aria-label="Cliente anterior">
               ‹
@@ -168,18 +178,29 @@ const clientes = [
     margin-top: var(--space-5);
   }
 
+  /* 24px hit area (WCAG 2.5.8) around a smaller visible dot. */
   .carousel-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--border-strong);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+  }
+
+  .carousel-dot::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--text-tertiary);
     transition: background 0.15s ease;
   }
 
-  .carousel-dot[aria-current="true"] {
+  .carousel-dot[aria-current="true"]::before {
     background: var(--magenta);
     box-shadow: 0 0 8px 1px rgba(var(--magenta-rgb), 0.5);
   }
