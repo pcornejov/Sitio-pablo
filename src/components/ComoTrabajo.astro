@@ -1,7 +1,10 @@
 ---
+import { waLink } from "../lib/contact";
+
+const waHref = waLink("Hola Pablo, quiero partir por el paso 1 y contarte mi idea 👋");
 ---
 
-<section class="process">
+<section class="process" id="como-trabajo">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow" style="justify-content:center;">Cómo trabajo</span>
@@ -22,16 +25,31 @@
         <span class="step-num">03</span>
         <h3>Desarrollo</h3>
         <p>
-          Construyo en iteraciones cortas, con reuniones online periódicas de seguimiento y un
-          roadmap con los objetivos y tiempos del proyecto, para que sepas siempre en qué etapa
-          estamos.
+          Avanzo por partes y nos juntamos online cada cierto tiempo para revisar lo hecho.
+          Tienes un calendario con fechas, así sabes siempre en qué vamos.
         </p>
       </div>
       <div class="step-card reveal corner-brackets">
         <span class="step-num">04</span>
-        <h3>Entrega y soporte</h3>
-        <p>Lanzamos, y me quedo cerca: monitoreo, ajustes y soporte continuo.</p>
+        <h3>Entrega</h3>
+        <p>
+          Publicamos y te enseño a usar lo que hicimos. Si después necesitas cambios o soporte
+          mensual, lo vemos aparte.
+        </p>
       </div>
+    </div>
+    <div class="process-cta">
+      <p>¿Partimos por el paso 1? Cuéntame tu idea, la primera conversación no tiene costo.</p>
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary"
+        data-cta="proceso-whatsapp"
+      >
+        Escríbeme por WhatsApp
+        <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+      </a>
     </div>
   </div>
 </section>
@@ -76,6 +94,22 @@
     font-family: var(--font-body);
     font-size: 0.9rem;
     color: var(--text-secondary);
+  }
+
+  .process-cta {
+    margin-top: var(--space-7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .process-cta p {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--text-primary);
   }
 
   @media (max-width: 960px) {

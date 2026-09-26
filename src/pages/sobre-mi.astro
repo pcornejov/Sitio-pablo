@@ -2,8 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { waLink } from "../lib/contact";
 
-const waMessage = encodeURIComponent("Hola Pablo, vi tu sitio y quiero conversar sobre un proyecto 👋");
+const waHref = waLink("Hola Pablo, leí tu página Sobre mí y quiero conversar sobre un proyecto 👋");
 
 const valores = [
   {
@@ -27,8 +28,9 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
 ---
 
 <BaseLayout
-  title="Sobre mí · Pablo Cornejo"
-  description="Pablo Cornejo, desarrollador de software con +15 años de experiencia en banca, gobierno y fintech. Hoy diseño páginas web, tiendas online y software a medida para empresas y negocios."
+  title="Sobre mí · Pablo Cornejo, desarrollador freelance en Chile"
+  description="Soy Pablo Cornejo, desarrollador freelance en Chile con +15 años en banca y gobierno. Hago páginas web, tiendas online y software a medida para pymes."
+  breadcrumbs={[{ name: "Sobre mí", path: "/sobre-mi/" }]}
 >
   <Header />
   <main id="main-content">
@@ -39,18 +41,18 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
           <span class="eyebrow">Sobre mí</span>
           <h1>Hola, soy <span class="accent">Pablo Cornejo</span></h1>
           <p class="about-sub">
-            Desarrollador de software con más de 15 años construyendo sistemas para banca,
-            gobierno y fintech. Hoy pongo esa misma experiencia al servicio de negocios y
-            empresas que necesitan una web, una tienda online o un software bien hecho.
+            Llevo más de 15 años haciendo sistemas para bancos, el Estado y empresas de pagos.
+            Hoy hago páginas web, tiendas online y software a medida para pymes y emprendedores
+            en Chile.
           </p>
         </div>
 
         <div class="about-story">
           <h2>De los sistemas críticos a tu proyecto</h2>
           <p>
-            Durante más de 15 años trabajé en el tipo de software donde un error no es una
-            opción: plataformas bancarias, sistemas de gobierno e integraciones fintech, donde la
-            seguridad, la estabilidad y los plazos importan de verdad.
+            Durante más de 15 años trabajé en plataformas bancarias, sistemas de gobierno e
+            integraciones de pagos. Ahí un error se notaba al tiro y había que responder por él.
+            Esa costumbre me la traje.
           </p>
           <p>
             Con la IA como herramienta de desarrollo pude acortar los tiempos sin bajar ese
@@ -60,8 +62,8 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
           </p>
           <p>
             Hoy diseño y desarrollo páginas web, tiendas online y software a medida para quien
-            necesita algo serio, hecho por una persona real que responde y se hace cargo del
-            proyecto.
+            necesita algo serio, hecho por una persona que responde y se hace cargo del proyecto.
+            Si quieres ver cómo trabajo, mira <a href="/casos/gruas-sepu/">el caso de Grúas Sepu</a>.
           </p>
         </div>
 
@@ -84,17 +86,17 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
         </div>
 
         <div class="about-ctas">
-          <a href="/#contacto" class="btn btn-primary">Conversemos tu proyecto</a>
           <a
-            href={`https://wa.me/56957591164?text=${waMessage}`}
+            href={waHref}
             target="_blank"
             rel="noopener"
-            class="btn btn-secondary"
+            class="btn btn-primary"
             data-cta="about-whatsapp"
           >
             Escríbeme por WhatsApp
             <span class="visually-hidden">(se abre en una nueva pestaña)</span>
           </a>
+          <a href="/#servicios" class="btn btn-secondary">Ver servicios</a>
         </div>
       </div>
     </section>
@@ -180,6 +182,16 @@ const stack = ["Node.js", "NestJS", "Java", "Angular", "TypeScript", "Python", "
     color: var(--text-secondary);
     font-size: 1.03125rem;
     line-height: 1.65;
+  }
+
+  .about-story a {
+    color: var(--cyan);
+    border-bottom: 1px dashed rgba(var(--cyan-rgb), 0.5);
+  }
+
+  .about-story a:hover,
+  .about-story a:focus-visible {
+    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.5);
   }
 
   .about-values {

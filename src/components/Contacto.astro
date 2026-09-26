@@ -1,9 +1,8 @@
 ---
 import WhatsAppIcon from "./WhatsAppIcon.astro";
+import { EMAIL, LINKEDIN_URL, WA_DISPLAY, waLink } from "../lib/contact";
 
-const waMessage = encodeURIComponent(
-  "Hola Pablo, vi tu sitio web y me interesa conversar sobre un proyecto 👋",
-);
+const waHref = waLink("Hola Pablo, vi tu sitio web y me interesa conversar sobre un proyecto 👋");
 ---
 
 <section class="contact" id="contacto">
@@ -12,84 +11,59 @@ const waMessage = encodeURIComponent(
       <span class="eyebrow">Contacto</span>
       <h2>Hablemos de tu proyecto</h2>
       <p>
-        Cuéntame qué necesitas: una página web, una tienda online o un sistema a medida, y
-        conversemos sin compromiso.
+        Cuéntame qué necesitas. Te hago un par de preguntas y te mando una cotización por
+        escrito, sin compromiso.
       </p>
-      <div class="contact-icons">
-        <a
-          class="icon-btn icon-email"
-          href="mailto:pablo.cornejo.v@gmail.com"
-          aria-label="Escríbeme un correo a pablo.cornejo.v@gmail.com"
-          data-cta="contacto-email"
-        >
-          <span class="icon-circle">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><rect x="2" y="4" width="20" height="16" rx="2"></rect><path
-                d="m22 6-10 7L2 6"
-              ></path></svg
-            >
-          </span>
-          <span class="icon-label">Email</span>
-        </a>
-        <a
-          class="icon-btn icon-whatsapp"
-          href={`https://wa.me/56957591164?text=${waMessage}`}
-          target="_blank"
-          rel="noopener"
-          aria-label="Escríbeme por WhatsApp al +56 9 5759 1164"
-          data-cta="contacto-whatsapp"
-        >
-          <span class="icon-circle">
-            <WhatsAppIcon size={26} />
-          </span>
-          <span class="icon-label">WhatsApp</span>
-        </a>
-        <a
-          class="icon-btn icon-linkedin"
-          href="https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/"
-          target="_blank"
-          rel="noopener"
-          aria-label="Mi perfil de LinkedIn"
-        >
-          <span class="icon-circle">
-            <svg viewBox="0 0 24 24" fill="currentColor"
-              ><path
-                d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.5 8.4h4V23h-4V8.4zM8.7 8.4h3.83v2h.05c.53-1 1.84-2.05 3.79-2.05 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23h-4V8.4z"
-              ></path></svg
-            >
-          </span>
-          <span class="icon-label">LinkedIn</span>
-        </a>
-      </div>
-      <a
-        href="mailto:pablo.cornejo.v@gmail.com"
-        class="btn btn-primary"
-        data-cta="contacto-cotizar">Cotizar proyecto</a
-      >
 
-      <details class="contact-form-toggle">
-        <summary>O escríbeme un mensaje directo</summary>
-        <form id="contact-form" class="contact-form">
-          <label>
-            <span>Tu nombre</span>
-            <input type="text" name="nombre" required autocomplete="name" />
-          </label>
-          <label>
-            <span>Tu mensaje</span>
-            <textarea name="mensaje" rows="4" required></textarea>
-          </label>
-          <button type="submit" class="btn btn-secondary" data-cta="contacto-form">
-            Abrir mensaje en mi correo
-          </button>
-          <p class="contact-form-hint">Se abrirá tu aplicación de correo con el mensaje listo para enviar.</p>
-        </form>
-      </details>
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary contact-wa"
+        data-cta="contacto-whatsapp"
+      >
+        <WhatsAppIcon size={22} />
+        Escríbeme por WhatsApp
+        <span class="visually-hidden">(se abre en una nueva pestaña)</span>
+      </a>
+      <p class="contact-number">{WA_DISPLAY}</p>
+
+      <div class="contact-divider" aria-hidden="true"><span>o déjame tus datos</span></div>
+
+      <form id="contact-form" class="contact-form">
+        <label>
+          <span>¿Qué necesitas?</span>
+          <select name="servicio">
+            <option value="Necesito una página web.">Una página web</option>
+            <option value="Necesito una tienda online.">Una tienda online</option>
+            <option value="Necesito un software a medida.">Un software a medida</option>
+            <option value="Todavía no tengo claro qué necesito.">Todavía no lo tengo claro</option>
+          </select>
+        </label>
+        <label>
+          <span>Tu nombre <span class="req">(obligatorio)</span></span>
+          <input type="text" name="nombre" required autocomplete="name" />
+        </label>
+        <label>
+          <span>Cuéntame un poco de tu negocio <span class="req">(opcional)</span></span>
+          <textarea name="mensaje" rows="3"></textarea>
+        </label>
+        <button type="submit" class="btn btn-secondary" data-cta="contacto-form">
+          Enviar por WhatsApp
+        </button>
+        <p class="contact-form-hint">
+          Se abre WhatsApp con tu mensaje listo. Solo tienes que enviarlo.
+        </p>
+        <p class="contact-form-status" role="status"></p>
+      </form>
+
+      <p class="contact-alt">
+        ¿Prefieres correo? <a href={`mailto:${EMAIL}`} data-cta="contacto-email">{EMAIL}</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener"
+          >LinkedIn <span class="visually-hidden">(se abre en una nueva pestaña)</span></a
+        >
+      </p>
     </div>
   </div>
 </section>
@@ -114,137 +88,54 @@ const waMessage = encodeURIComponent(
     align-items: center;
   }
 
-  .contact-card p {
+  .contact-card > p {
     font-family: var(--font-body);
     color: var(--text-secondary);
     max-width: 520px;
   }
 
-  .contact-icons {
-    display: flex;
-    gap: var(--space-6);
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: var(--space-3);
-  }
-
-  .icon-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-2);
-    text-decoration: none;
-    color: var(--text-tertiary);
-  }
-
-  .icon-btn .icon-circle {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-elevated-2);
-    border: 1px solid var(--border-strong);
-    transition:
-      transform 0.15s ease,
-      border-color 0.15s ease,
-      box-shadow 0.2s ease;
-  }
-
-  .icon-btn svg {
-    width: 26px;
-    height: 26px;
-  }
-
-  .icon-linkedin svg {
-    fill: currentColor;
-  }
-
-  .icon-email svg {
-    fill: none;
-    stroke: currentColor;
-  }
-
-  .icon-btn .icon-label {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    transition: color 0.15s ease;
-  }
-
-  .icon-btn:hover .icon-circle,
-  .icon-btn:focus-visible .icon-circle {
-    transform: translateY(-4px);
-  }
-
-  .icon-btn:hover .icon-label,
-  .icon-btn:focus-visible .icon-label {
-    color: var(--text-primary);
-  }
-
-  .icon-email .icon-circle {
-    color: var(--cyan);
-  }
-  .icon-email:hover .icon-circle,
-  .icon-email:focus-visible .icon-circle {
-    border-color: var(--cyan);
-    box-shadow: 0 0 20px 2px rgba(var(--cyan-rgb), 0.4);
-  }
-
-  .icon-whatsapp .icon-circle {
-    color: var(--green);
-  }
-  .icon-whatsapp:hover .icon-circle,
-  .icon-whatsapp:focus-visible .icon-circle {
-    border-color: var(--green);
-    box-shadow: 0 0 20px 2px rgba(var(--green-rgb), 0.4);
-  }
-
-  .icon-linkedin .icon-circle {
-    color: var(--magenta);
-  }
-  .icon-linkedin:hover .icon-circle,
-  .icon-linkedin:focus-visible .icon-circle {
-    border-color: var(--magenta);
-    box-shadow: 0 0 20px 2px rgba(var(--magenta-rgb), 0.4);
-  }
-
-  .contact-form-toggle {
-    width: 100%;
-    max-width: 420px;
+  .contact-wa {
+    font-size: 1.125rem;
+    padding: 16px 30px;
     margin-top: var(--space-2);
   }
 
-  .contact-form-toggle summary {
-    cursor: pointer;
-    font-family: var(--font-sub);
-    font-weight: 600;
-    font-size: 0.9375rem;
-    letter-spacing: 0.01em;
-    color: var(--cyan);
-    text-align: center;
-    list-style: none;
-    border-bottom: 1px dashed rgba(var(--cyan-rgb), 0.5);
-    padding-bottom: 2px;
+  .contact-card > .contact-number {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: var(--green);
+    text-shadow: 0 0 8px rgba(var(--green-rgb), 0.4);
+    margin-top: calc(var(--space-3) * -1);
   }
 
-  .contact-form-toggle summary::-webkit-details-marker {
-    display: none;
+  .contact-divider {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
   }
 
-  .contact-form-toggle summary:hover,
-  .contact-form-toggle summary:focus-visible {
-    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.5);
+  .contact-divider::before,
+  .contact-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-strong);
   }
 
   .contact-form {
+    width: 100%;
+    max-width: 420px;
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
-    margin-top: var(--space-4);
     text-align: left;
   }
 
@@ -257,43 +148,103 @@ const waMessage = encodeURIComponent(
     color: var(--text-secondary);
   }
 
+  .contact-form .req {
+    color: var(--text-tertiary);
+    font-size: 0.8125rem;
+  }
+
   .contact-form input,
-  .contact-form textarea {
+  .contact-form textarea,
+  .contact-form select {
     font-family: var(--font-body);
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--text-primary);
     background: var(--bg-elevated-2);
-    border: 1px solid var(--border-strong);
+    /* #6b7389 keeps the field edge at 3:1+ against both the input and the
+       card background (WCAG 1.4.11). */
+    border: 1px solid #6b7389;
     border-radius: var(--radius-sm);
     padding: var(--space-3);
     resize: vertical;
   }
 
   .contact-form input:focus-visible,
-  .contact-form textarea:focus-visible {
+  .contact-form textarea:focus-visible,
+  .contact-form select:focus-visible {
     outline: 2px solid var(--cyan);
     outline-offset: 2px;
   }
 
+  .contact-form button {
+    align-self: stretch;
+  }
+
   .contact-form-hint {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--text-tertiary);
-    max-width: none;
     text-align: center;
+  }
+
+  .contact-form-status {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--green);
+    text-align: center;
+    min-height: 1em;
+  }
+
+  .contact-card > .contact-alt {
+    font-size: 0.9375rem;
+    color: var(--text-tertiary);
+  }
+
+  .contact-alt a {
+    color: var(--cyan);
+    border-bottom: 1px dashed rgba(var(--cyan-rgb), 0.5);
+    overflow-wrap: anywhere;
+  }
+
+  .contact-alt a:hover,
+  .contact-alt a:focus-visible {
+    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.5);
+  }
+
+  .contact-alt .sep {
+    margin-inline: var(--space-2);
+  }
+
+  @media (max-width: 560px) {
+    .contact-card {
+      padding: var(--space-6) var(--space-5);
+    }
   }
 </style>
 
 <script>
+  import { waLink } from "../lib/contact";
+
   const form = document.querySelector<HTMLFormElement>("#contact-form");
+  const status = form?.querySelector<HTMLElement>(".contact-form-status");
 
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
     const data = new FormData(form);
-    const nombre = (data.get("nombre") as string) ?? "";
-    const mensaje = (data.get("mensaje") as string) ?? "";
-    const subject = encodeURIComponent(`Consulta desde el sitio · ${nombre}`);
-    const body = encodeURIComponent(`${mensaje}\n\n— ${nombre}`);
-    window.location.href = `mailto:pablo.cornejo.v@gmail.com?subject=${subject}&body=${body}`;
+    const servicio = ((data.get("servicio") as string) ?? "").trim();
+    const nombre = ((data.get("nombre") as string) ?? "").trim();
+    const mensaje = ((data.get("mensaje") as string) ?? "").trim();
+
+    let text = `Hola Pablo, soy ${nombre}. ${servicio}`;
+    if (mensaje) text += `\n\n${mensaje}`;
+
+    const url = waLink(text);
+    const win = window.open(url, "_blank");
+    if (win) {
+      win.opener = null;
+    } else {
+      // Pop-up blocked: open WhatsApp in this tab instead.
+      window.location.href = url;
+    }
+    if (status) status.textContent = "Abriendo WhatsApp con tu mensaje…";
   });
 </script>

@@ -1,7 +1,7 @@
 ---
-const waMessage = encodeURIComponent(
-  "Hola Pablo, vi tu sitio y quiero cotizar un proyecto 🚀",
-);
+import { waLink } from "../lib/contact";
+
+const waHref = waLink("Hola Pablo, vi tu sitio y quiero cotizar un proyecto 🚀");
 ---
 
 <section class="hero" id="inicio">
@@ -13,23 +13,26 @@ const waMessage = encodeURIComponent(
       Llevo tu negocio a internet, <span class="accent">bien hecho</span>.
     </h1>
     <p class="hero-sub">
-      Páginas web, tiendas online y software a medida. La experiencia de +15 años en banca,
-      gobierno y fintech, con el trato cercano de trabajar directo con una sola persona.
+      Páginas web, tiendas online y software a medida para pymes y emprendedores en Chile.
+      Hablas directo conmigo, que soy quien lo hace, con el cuidado que aprendí en 15 años
+      haciendo sistemas para bancos y el Estado.
     </p>
     <div class="hero-ctas">
-      <a href="#contacto" class="btn btn-primary">Cotizar proyecto</a>
       <a
-        href={`https://wa.me/56957591164?text=${waMessage}`}
+        href={waHref}
         target="_blank"
         rel="noopener"
-        class="btn btn-secondary"
+        class="btn btn-primary"
         data-cta="hero-whatsapp"
       >
-        Escribir por WhatsApp
+        Escríbeme por WhatsApp
         <span class="visually-hidden">(se abre en una nueva pestaña)</span>
       </a>
+      <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
     </div>
-    <p class="trust-line"><strong>+15 años de experiencia</strong> · Banca, gobierno y fintech</p>
+    <p class="trust-line">
+      <strong>Cotización sin costo</strong> · Trato directo, sin intermediarios
+    </p>
   </div>
 </section>
 

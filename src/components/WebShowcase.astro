@@ -1,4 +1,6 @@
 ---
+import { waLink } from "../lib/contact";
+
 // Single source of truth for the fictional NovaDent mockup's service
 // cards, shared by both the laptop and phone views below (the icon SVG
 // paths and copy used to be pasted twice and could drift out of sync).
@@ -30,19 +32,28 @@ const services = [
   <div class="container webshow-layout">
     <div class="webshow-copy">
       <span class="eyebrow">Ejemplo ilustrativo</span>
-      <h2 style="margin-top:12px;">Así se ve una web hecha en serio</h2>
+      <h2 style="margin-top:12px;">Lo que puede tener tu web</h2>
       <p>
-        Una recreación (no un cliente real) de portada que da confianza, servicios claros y
-        reserva de horas online. Y el mismo sitio, impecable también en el celular, que es
-        desde donde llegan la mayoría de tus clientes.
+        Esta clínica no existe: la armé para mostrarte lo que suele necesitar un negocio de
+        servicios. Una portada que da confianza, servicios fáciles de entender y reserva de
+        horas online. Y se ve igual de bien en el celular.
       </p>
       <div class="chips">
-        <span class="chip">Carga &lt; 1 seg</span>
-        <span class="chip">Responsive</span>
-        <span class="chip">Reservas online</span>
-        <span class="chip">SEO listo</span>
+        <span class="chip">Carga rápida</span>
+        <span class="chip">Se adapta al celular</span>
+        <span class="chip">Reserva de horas</span>
+        <span class="chip">Lista para Google</span>
       </div>
-      <a href="#contacto" class="btn btn-primary">Quiero una web así</a>
+      <a
+        href={waLink("Hola Pablo, vi el ejemplo de la clínica en tu sitio y quiero una web así 👋")}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary"
+        data-cta="muestra-whatsapp"
+      >
+        Quiero una web así
+        <span class="visually-hidden">por WhatsApp (se abre en una nueva pestaña)</span>
+      </a>
     </div>
 
     <div class="devices" aria-hidden="true" data-nosnippet>
@@ -70,7 +81,7 @@ const services = [
               </header>
               <div class="nd-hero">
                 <div>
-                  <h3>Tu sonrisa, en buenas manos</h3>
+                  <div class="nd-title">Tu sonrisa, en buenas manos</div>
                   <p>
                     Clínica dental con especialistas y tecnología de punta. Reserva tu hora
                     online en menos de un minuto.
@@ -92,14 +103,14 @@ const services = [
                       <div class="nd-ic">
                         <svg viewBox="0 0 24 24" set:html={s.icon} />
                       </div>
-                      <h4>{s.title}</h4>
+                      <div class="nd-card-title">{s.title}</div>
                       <p>{s.desc}</p>
                     </div>
                   ))
                 }
               </div>
               <div class="nd-form">
-                <h4>Reserva tu hora</h4>
+                <div class="nd-form-title">Reserva tu hora</div>
                 <div class="nd-field">
                   <span class="nd-label">Nombre completo</span>
                   <div class="nd-input">María Fernández</div>
@@ -140,7 +151,7 @@ const services = [
             </header>
             <div class="nd-hero">
               <div>
-                <h3>Tu sonrisa, en buenas manos</h3>
+                <div class="nd-title">Tu sonrisa, en buenas manos</div>
                 <p>
                   Clínica dental con especialistas y tecnología de punta. Reserva tu hora online
                   en menos de un minuto.
@@ -162,14 +173,14 @@ const services = [
                     <div class="nd-ic">
                       <svg viewBox="0 0 24 24" set:html={s.icon} />
                     </div>
-                    <h4>{s.title}</h4>
+                    <div class="nd-card-title">{s.title}</div>
                     <p>{s.desc}</p>
                   </div>
                 ))
               }
             </div>
             <div class="nd-form">
-              <h4>Reserva tu hora</h4>
+              <div class="nd-form-title">Reserva tu hora</div>
               <div class="nd-field">
                 <span class="nd-label">Nombre completo</span>
                 <div class="nd-input">María Fernández</div>
@@ -502,7 +513,7 @@ const services = [
     padding: 26px 20px;
   }
 
-  .nd-hero h3 {
+  .nd-title {
     font-family: var(--font-sub);
     font-weight: 700;
     font-size: 1.5rem;
@@ -617,7 +628,8 @@ const services = [
     stroke-width: 2;
   }
 
-  .nd-card h4 {
+  .nd-card-title {
+    font-weight: 700;
     font-size: 0.76rem;
     margin-bottom: 3px;
     color: #1e2a32;
@@ -637,8 +649,9 @@ const services = [
     padding: 16px;
   }
 
-  .nd-form h4 {
+  .nd-form-title {
     font-family: var(--font-sub);
+    font-weight: 700;
     font-size: 0.95rem;
     margin-bottom: 10px;
     color: #1e2a32;
@@ -762,6 +775,12 @@ const services = [
     }
   }
 
+  /* No point running the mockup's loops while it is off screen. */
+  .devices.is-offscreen *,
+  .devices.is-offscreen {
+    animation-play-state: paused;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .lap-page,
     .ph-page,
@@ -771,3 +790,13 @@ const services = [
     }
   }
 </style>
+
+<script>
+  const devices = document.querySelector<HTMLElement>(".webshow .devices");
+
+  if (devices && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      devices.classList.toggle("is-offscreen", !entry.isIntersecting);
+    }).observe(devices);
+  }
+</script>

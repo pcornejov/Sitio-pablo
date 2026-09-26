@@ -1,4 +1,67 @@
 ---
+import { waLink } from "../lib/contact";
+
+const services = [
+  {
+    title: "Páginas web",
+    intro:
+      "Diseño y desarrollo tu página para que se vea profesional, cargue rápido y funcione bien en el celular, así quien te busca te encuentra y te escribe.",
+    items: [
+      {
+        title: "Landing page",
+        text: "Una sola página, directa y bien diseñada, para presentar tu negocio y recibir contactos.",
+      },
+      {
+        title: "Sitio corporativo",
+        text: "Varias secciones (servicios, quiénes somos, contacto) para empresas que necesitan mostrar más.",
+      },
+    ],
+    cta: "Cotizar mi página web",
+    message: "Hola Pablo, quiero cotizar una página web para mi negocio 👋",
+  },
+  {
+    title: "Tiendas online",
+    intro:
+      "Tu tienda con carrito de compra, para vender por internet a toda hora y recibir pedidos sin estar pendiente del teléfono.",
+    items: [
+      {
+        title: "Carrito y pagos online",
+        text: "Tus clientes eligen, pagan y compran solos, a cualquier hora.",
+      },
+      {
+        title: "Catálogo de productos",
+        text: "Tus productos ordenados por categoría, con fotos, stock y precios que actualizas tú mismo.",
+      },
+      {
+        title: "Panel de pedidos",
+        text: "Un panel simple para ver tus ventas, gestionar pedidos y controlar el stock desde el celular o el computador.",
+      },
+    ],
+    cta: "Cotizar mi tienda online",
+    message: "Hola Pablo, quiero cotizar una tienda online 🛒",
+  },
+  {
+    title: "Software a medida",
+    intro:
+      "Si tu negocio funciona con planillas, cuadernos y mensajes sueltos, te armo un sistema que lo ordene: inventario, agenda, cotizaciones o lo que necesites.",
+    items: [
+      {
+        title: "Sistemas internos",
+        text: "Una herramienta hecha para cómo trabajas tú, pensada para crecer sin tener que rehacerla en un año.",
+      },
+      {
+        title: "Integración con IA",
+        text: "Sumo IA a tareas que hoy haces a mano, como ordenar datos o resumir documentos, y conecto tus sistemas para que no copies información de un lado a otro.",
+      },
+      {
+        title: "Renovar sistemas antiguos",
+        text: "Si tienes un sistema viejo que ya cuesta mantener, lo paso a tecnología actual en la nube sin detener tu operación.",
+      },
+    ],
+    cta: "Cotizar mi sistema",
+    message: "Hola Pablo, quiero cotizar un software a medida para mi negocio ⚙️",
+  },
+];
 ---
 
 <section class="services" id="servicios">
@@ -7,97 +70,38 @@
       <span class="eyebrow" style="justify-content:center;">Servicios</span>
       <h2>En qué te puedo ayudar</h2>
       <p>
-        Desde una página web o una tienda online hasta software que corre en bancos y organismos
-        públicos.
+        Desde una página para que te encuentren hasta un sistema hecho según cómo trabaja tu
+        negocio.
       </p>
     </div>
     <div class="cat-grid">
-      <div class="cat-card reveal corner-brackets">
-        <span class="cat-tag">// 01</span>
-        <h3>Páginas Web</h3>
-        <p>
-          Diseño y desarrollo tu página web para que se vea profesional, cargue rápido y se vea
-          bien en el celular, lista para darle presencia online a tu negocio.
-        </p>
-        <ul class="cat-items">
-          <li>
-            <h4>Landing Pages</h4>
-            <p>
-              Una sola página, directa y bien diseñada, para presentar tu negocio y captar
-              contactos.
-            </p>
-          </li>
-          <li>
-            <h4>Sitios Corporativos</h4>
-            <p>
-              Varias secciones —servicios, nosotros, contacto— para empresas que necesitan más
-              presencia online.
-            </p>
-          </li>
-        </ul>
-      </div>
-      <div class="cat-card reveal corner-brackets">
-        <span class="cat-tag">// 02</span>
-        <h3>Tiendas Digitales</h3>
-        <p>
-          Tu tienda online con carrito de compra, para que vendas por internet 24/7 y recibas
-          pedidos sin estar pendiente del teléfono.
-        </p>
-        <ul class="cat-items">
-          <li>
-            <h4>Carrito y Pagos Online</h4>
-            <p>
-              Carrito de compra integrado con medios de pago, para que tus clientes compren
-              solos, a cualquier hora.
-            </p>
-          </li>
-          <li>
-            <h4>Catálogo de Productos</h4>
-            <p>
-              Tus productos ordenados por categoría, con fotos, stock y precios que actualizas tú
-              mismo.
-            </p>
-          </li>
-          <li>
-            <h4>Panel de Pedidos</h4>
-            <p>
-              Un panel simple para ver tus ventas, gestionar pedidos y controlar el stock desde
-              el celular o el computador.
-            </p>
-          </li>
-        </ul>
-      </div>
-      <div class="cat-card reveal corner-brackets">
-        <span class="cat-tag">// 03</span>
-        <h3>Software a Medida</h3>
-        <p>
-          Construyo aplicaciones y sistemas a medida con Node.js, Java y Angular, pensados para
-          cómo funciona tu empresa en la práctica.
-        </p>
-        <ul class="cat-items">
-          <li>
-            <h4>Backend y APIs a Medida</h4>
-            <p>
-              Diseño el backend, la base de datos y las APIs de tu producto, pensados para crecer
-              sin tener que reescribir todo en un año.
-            </p>
-          </li>
-          <li>
-            <h4>Integración con IA</h4>
-            <p>
-              Sumo modelos de IA a tus procesos y conecto sistemas, incluida integración con
-              banca y organismos públicos, para automatizar tareas y reducir errores.
-            </p>
-          </li>
-          <li>
-            <h4>Modernización de Sistemas Legacy</h4>
-            <p>
-              Migro aplicaciones Java y Angular a arquitecturas modernas en la nube (AWS,
-              Docker), sin frenar la operación mientras tanto.
-            </p>
-          </li>
-        </ul>
-      </div>
+      {
+        services.map((s, i) => (
+          <div class="cat-card reveal corner-brackets">
+            <span class="cat-tag">// 0{i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.intro}</p>
+            <ul class="cat-items">
+              {s.items.map((item) => (
+                <li>
+                  <h4>{item.title}</h4>
+                  <p>{item.text}</p>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={waLink(s.message)}
+              target="_blank"
+              rel="noopener"
+              class="btn btn-secondary btn-sm cat-cta"
+              data-cta={`servicio-${i + 1}-whatsapp`}
+            >
+              {s.cta}
+              <span class="visually-hidden">por WhatsApp (se abre en una nueva pestaña)</span>
+            </a>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -187,16 +191,9 @@
     color: var(--text-secondary);
   }
 
-  .cat-items a.inline-link {
-    color: var(--magenta);
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px dashed rgba(var(--magenta-rgb), 0.5);
-  }
-
-  .cat-items a.inline-link:hover,
-  .cat-items a.inline-link:focus-visible {
-    text-shadow: 0 0 8px rgba(var(--magenta-rgb), 0.5);
+  .cat-cta {
+    align-self: flex-start;
+    margin-top: var(--space-2);
   }
 
   @media (max-width: 960px) {

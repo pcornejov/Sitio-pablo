@@ -1,59 +1,103 @@
 ---
 import "../styles/global.css";
+import WhatsAppIcon from "../components/WhatsAppIcon.astro";
+import { EMAIL, LINKEDIN_URL, WA_DISPLAY, waLink } from "../lib/contact";
 
-interface Props {
-  title: string;
-  description?: string;
+interface Breadcrumb {
+  name: string;
+  path: string;
 }
 
+interface Props {
+  title?: string;
+  description?: string;
+  /** Keeps the page out of search results (e.g. the 404 page). */
+  noindex?: boolean;
+  /** Trail below the home page, emitted as BreadcrumbList structured data. */
+  breadcrumbs?: Breadcrumb[];
+}
+
+const defaultDescription =
+  "Diseño páginas web, tiendas online y software a medida para pymes en Chile. Trato directo y +15 años de experiencia en banca y gobierno.";
+
 const {
-  title = "Pablo Cornejo · Páginas Web, Tiendas Online y Software a Medida",
-  description = "Diseño páginas web, tiendas online con carrito de compra y software a medida con IA. +15 años de experiencia en banca, gobierno y fintech.",
+  title = "Diseño de Páginas Web y Tiendas Online en Chile · Pablo Cornejo",
+  description = defaultDescription,
+  noindex = false,
+  breadcrumbs = [],
 } = Astro.props;
 
 const siteUrl = "https://www.pablocornejo.cl/";
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = "https://www.pablocornejo.cl/og-image.png";
+const ogImage = `${siteUrl}og-image.jpg`;
+const ogImageAlt =
+  "Pablo Cornejo: páginas web, tiendas online y software a medida en Chile";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Pablo Cornejo",
-  jobTitle: "Desarrollador de software",
-  image: ogImage,
-  url: siteUrl,
-  telephone: "+56957591164",
-  email: "pablo.cornejo.v@gmail.com",
-  description,
-  sameAs: ["https://www.linkedin.com/in/pablo-cornejo-villarroel-43973a59/"],
-  makesOffer: [
-    {
+const businessId = `${siteUrl}#negocio`;
+const personId = `${siteUrl}#pablo`;
+
+const services = [
+  "Diseño y desarrollo de páginas web",
+  "Desarrollo de tiendas online con carrito de compra",
+  "Desarrollo de software a medida",
+];
+
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "WebSite",
+    "@id": `${siteUrl}#web`,
+    url: siteUrl,
+    name: "Pablo Cornejo",
+    inLanguage: "es-CL",
+    publisher: { "@id": businessId },
+  },
+  {
+    "@type": "ProfessionalService",
+    "@id": businessId,
+    name: "Pablo Cornejo · Desarrollo web y software",
+    url: siteUrl,
+    image: ogImage,
+    logo: `${siteUrl}apple-touch-icon.png`,
+    telephone: "+56957591164",
+    email: EMAIL,
+    description: defaultDescription,
+    areaServed: { "@type": "Country", name: "Chile" },
+    founder: { "@id": personId },
+    sameAs: [LINKEDIN_URL],
+    makesOffer: services.map((name) => ({
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "Diseño y desarrollo de páginas web",
-        areaServed: "CL",
+        name,
+        areaServed: { "@type": "Country", name: "Chile" },
       },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Desarrollo de tiendas online con carrito de compra",
-        areaServed: "CL",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Desarrollo de software a medida",
-        areaServed: "CL",
-      },
-    },
-  ],
-};
+    })),
+  },
+  {
+    "@type": "Person",
+    "@id": personId,
+    name: "Pablo Cornejo",
+    jobTitle: "Desarrollador de software freelance",
+    url: `${siteUrl}sobre-mi/`,
+    worksFor: { "@id": businessId },
+    sameAs: [LINKEDIN_URL],
+  },
+];
+
+if (breadcrumbs.length) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: [{ name: "Inicio", path: "/" }, ...breadcrumbs].map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      item: new URL(crumb.path, Astro.site).href,
+    })),
+  });
+}
+
+const jsonLd = { "@context": "https://schema.org", "@graph": graph };
 ---
 
 <!doctype html>
@@ -62,46 +106,57 @@ const personJsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonicalUrl} />}
     <meta name="theme-color" content="#0a0a0f" />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`${base}/apple-touch-icon.png`} />
     <title>{title}</title>
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pablo Cornejo" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:locale" content="es_CL" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
-    <script
-      type="application/ld+json"
-      is:inline
-      set:html={JSON.stringify(personJsonLd)}
-    />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
+    <!-- Inter and Orbitron are variable fonts: one file covers every weight.
+         Preloading the three faces used above the fold keeps the late font
+         swap from shifting the hero (CLS). -->
+    <link rel="preload" href={`${base}/fonts/orbitron-var.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}/fonts/rajdhani-700.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}/fonts/inter-var.woff2`} as="font" type="font/woff2" crossorigin />
     <style is:global set:html={`
-      @font-face{font-family:'Orbitron';font-style:normal;font-weight:700;font-display:swap;src:url('${base}/fonts/orbitron-700.woff2') format('woff2');}
-      @font-face{font-family:'Orbitron';font-style:normal;font-weight:900;font-display:swap;src:url('${base}/fonts/orbitron-900.woff2') format('woff2');}
+      @font-face{font-family:'Orbitron';font-style:normal;font-weight:400 900;font-display:swap;src:url('${base}/fonts/orbitron-var.woff2') format('woff2');}
       @font-face{font-family:'Rajdhani';font-style:normal;font-weight:600;font-display:swap;src:url('${base}/fonts/rajdhani-600.woff2') format('woff2');}
       @font-face{font-family:'Rajdhani';font-style:normal;font-weight:700;font-display:swap;src:url('${base}/fonts/rajdhani-700.woff2') format('woff2');}
       @font-face{font-family:'Share Tech Mono';font-style:normal;font-weight:400;font-display:swap;src:url('${base}/fonts/share-tech-mono-400.woff2') format('woff2');}
-      @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('${base}/fonts/inter-400.woff2') format('woff2');}
-      @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('${base}/fonts/inter-600.woff2') format('woff2');}
+      @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('${base}/fonts/inter-var.woff2') format('woff2');}
     `} />
     <script is:inline>
       (function () {
+        var root = document.documentElement;
         var reduced =
           window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (!reduced) {
-          document.documentElement.classList.add("js-reveal");
+          root.classList.add("js-reveal");
         }
+        // Restore the visitor's "pause animations" choice before first paint.
+        try {
+          if (localStorage.getItem("motion") === "paused") root.classList.add("motion-paused");
+        } catch (e) {}
       })();
     </script>
 
@@ -116,6 +171,18 @@ const personJsonLd = {
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <slot />
+    <aside class="wa-float-wrap" aria-label="Contacto rápido">
+      <a
+        class="wa-float"
+        href={waLink("Hola Pablo, vi tu sitio y tengo una consulta 💬")}
+        target="_blank"
+        rel="noopener"
+        aria-label={`Escríbeme por WhatsApp al ${WA_DISPLAY} (se abre en una nueva pestaña)`}
+        data-cta="float-whatsapp"
+      >
+        <WhatsAppIcon size={30} />
+      </a>
+    </aside>
     <script>
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -138,6 +205,107 @@ const personJsonLd = {
           revealEls.forEach((el) => observer.observe(el));
         }
       }
+
+      // Fade the floating WhatsApp button while the page scrolls so it
+      // covers less of the content underneath.
+      const waFloat = document.querySelector<HTMLElement>(".wa-float");
+
+      if (waFloat && !prefersReducedMotion) {
+        let scrollTimer: ReturnType<typeof setTimeout> | null = null;
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            waFloat.classList.add("is-scrolling");
+            if (scrollTimer) clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => waFloat.classList.remove("is-scrolling"), 400);
+          },
+          { passive: true },
+        );
+      }
     </script>
   </body>
 </html>
+
+<style>
+  .wa-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 90;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #3dffb0, #17c98a);
+    color: #06110c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 0 0 1px rgba(var(--cyan-rgb), 0.4),
+      0 10px 26px -6px rgba(0, 0, 0, 0.6),
+      0 0 24px 2px rgba(var(--green-rgb), 0.35);
+    text-decoration: none;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .wa-float.is-scrolling {
+    opacity: 0.45;
+  }
+
+  @media (max-width: 480px) {
+    .wa-float {
+      width: 48px;
+      height: 48px;
+      bottom: 16px;
+      right: 16px;
+    }
+  }
+
+  /* A few pulses to draw the eye on arrival, then it stays still. */
+  .wa-float::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--green-rgb), 0.45), transparent 72%);
+    animation: waPulse 2.8s ease-out 3;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  @keyframes waPulse {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.6;
+    }
+    70% {
+      opacity: 0.08;
+    }
+    100% {
+      transform: scale(1.55);
+      opacity: 0;
+    }
+  }
+
+  .wa-float:hover,
+  .wa-float:focus-visible {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 0 1px var(--cyan),
+      0 10px 26px -6px rgba(0, 0, 0, 0.6),
+      0 0 34px 6px rgba(var(--green-rgb), 0.5);
+  }
+
+  /* Above the mobile breakpoint the header's WhatsApp button is always
+     visible, so the floating one would be redundant. */
+  @media (min-width: 901px) {
+    .wa-float {
+      display: none;
+    }
+  }
+</style>
